@@ -12,7 +12,7 @@ const Input: React.FC<InputProps> = ({ id, name, placeholder, value, onChange })
       placeholder={placeholder}
       autoComplete="off"
       value={value}
-      className={styles.Input}
+      className={styles.input}
       onChange={onChange}
     />
   );
