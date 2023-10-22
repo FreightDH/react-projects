@@ -5,9 +5,9 @@
 //</МИКСИНЫ>
 
 //<ШРИФТЫ>
-$fontFamily: 'Inter', sans-serif;
+$fontFamily: 'Lato', sans-serif;
 $fontSize: toRem(16);
-$mainColor: #353535;
+$mainColor: #333;
 //</ШРИФТЫ>
 
 //<ПЕРЕМЕННЫЕ>
@@ -16,7 +16,7 @@ $minWidth: 320;
 // Ширина макета
 $maxWidth: 1000;
 // Ширина ограничивающего контейнера (0 = нет ограничения)
-$maxWidthContainer: 970;
+$maxWidthContainer: 750;
 // Общий отступ у контейнера
 // (30 = по 15px слева и справа, 0 = нет отступа)
 $containerPadding: 30;
