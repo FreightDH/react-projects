@@ -8,6 +8,7 @@ const DEFAULT_TODO_LIST: Task[] = [];
 
 function App() {
   const [tasks, setTasks] = useState(DEFAULT_TODO_LIST);
+  const [taskIdForEdit, setTaskIdForEdit] = useState<Task['id'] | null>(null);
 
   const addTask = ({ name, description }: Pick<Task, 'name' | 'description'>) => {
     setTasks([...tasks, { id: Date.now(), name, description, completed: false }]);
@@ -29,6 +30,23 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  const selectTaskForEdit = (id: Task['id']) => {
+    setTaskIdForEdit(id);
+  };
+
+  const editTask = (newTask: Task) => {
+    setTasks(
+      tasks.map((task) => {
+        if (task.id === taskIdForEdit) {
+          setTaskIdForEdit(null);
+          return newTask;
+        }
+
+        return task;
+      }),
+    );
+  };
+
   return (
     <>
       <main className={styles.page}>
@@ -36,7 +54,14 @@ function App() {
           <div className={styles.page__body}>
             <div className={styles.page__title}>todos</div>
             <AddSection addTask={addTask} />
-            <TasksSection tasks={tasks} completeTask={completeTask} deleteTask={deleteTask} />
+            <TasksSection
+              tasks={tasks}
+              completeTask={completeTask}
+              deleteTask={deleteTask}
+              selectTaskForEdit={selectTaskForEdit}
+              taskIdForEdit={taskIdForEdit}
+              editTask={editTask}
+            />
           </div>
         </div>
       </main>

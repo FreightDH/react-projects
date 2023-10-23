@@ -1,0 +1,13 @@
+.edit {
+  padding: 10px 0;
+  border-bottom: 1px solid #dee2e6;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &__btn {
+    padding: 15px 0px 0px 0px;
+    align-self: flex-end;
+  }
+}

@@ -6,9 +6,10 @@ type TaskProps = {
   task: Task;
   completeTask: (id: Task['id']) => void;
   deleteTask: (id: Task['id']) => void;
+  selectTaskForEdit: (id: Task['id']) => void;
 };
 
-const Task: React.FC<TaskProps> = ({ task, completeTask, deleteTask }): ReactElement => {
+const Task: React.FC<TaskProps> = ({ task, completeTask, deleteTask, selectTaskForEdit }): ReactElement => {
   const taskNameClass = task.completed ? `${styles.task__name} ${styles.completed}` : `${styles.task__name}`;
 
   return (
@@ -19,7 +20,9 @@ const Task: React.FC<TaskProps> = ({ task, completeTask, deleteTask }): ReactEle
         <Button action="complete" onClick={() => completeTask(task.id)}>
           Complete
         </Button>
-        <Button action="edit">Edit</Button>
+        <Button action="edit" onClick={() => selectTaskForEdit(task.id)}>
+          Edit
+        </Button>
         <Button action="delete" onClick={() => deleteTask(task.id)}>
           Delete
         </Button>
