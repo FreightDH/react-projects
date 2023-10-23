@@ -9,13 +9,15 @@ interface LabelProps {
 }
 
 const Label: React.FC<LabelProps> = ({ type, task, onInputValueChange }): ReactElement => {
+  const typeLabel = type === 'name' ? 'Task' : 'Description';
+
   return (
     <label htmlFor={type} className={styles.label}>
-      <div>Task</div>
+      <div>{typeLabel}</div>
       <Input
         id={type}
         name={type}
-        placeholder="Enter Task"
+        placeholder={`Enter ${typeLabel}`}
         value={type === 'name' ? task.name : task.description}
         onChange={(event) => onInputValueChange(event)}
       />
