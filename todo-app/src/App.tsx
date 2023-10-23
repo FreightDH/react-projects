@@ -47,16 +47,16 @@ function App() {
     );
   };
 
-  const saveTasks = () => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  };
-
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks');
     if (savedTasks) {
       setTasks(JSON.parse(savedTasks));
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <>
@@ -72,7 +72,6 @@ function App() {
               selectTaskForEdit={selectTaskForEdit}
               taskIdForEdit={taskIdForEdit}
               editTask={editTask}
-              saveTasks={saveTasks}
             />
           </div>
         </div>

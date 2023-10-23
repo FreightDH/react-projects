@@ -3,16 +3,10 @@
   flex-direction: column;
   gap: 5px;
 
-  &__header {
-    padding: 0px 0px 10px 0px;
-
-    display: flex;
-    justify-content: space-between;
-
-    border-bottom: 1px solid #000;
-  }
-
   &__title {
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid #000;
+
     font-size: 20px;
     font-weight: 500;
   }

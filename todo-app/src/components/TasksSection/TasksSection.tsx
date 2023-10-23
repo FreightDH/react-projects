@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react';
 import Task from './TaskItem/TaskItem';
 import styles from './TasksSection.module.scss';
 import EditPanel from '../EditPanel/EditPanel';
-import Button from '../Button/Button';
 
 interface TasksSectionProps {
   tasks: Task[];
@@ -11,7 +10,6 @@ interface TasksSectionProps {
   selectTaskForEdit: (id: Task['id']) => void;
   taskIdForEdit: Task['id'] | null;
   editTask: (task: Task) => void;
-  saveTasks: () => void;
 }
 
 const TasksSection: React.FC<TasksSectionProps> = ({
@@ -21,16 +19,10 @@ const TasksSection: React.FC<TasksSectionProps> = ({
   selectTaskForEdit,
   taskIdForEdit,
   editTask,
-  saveTasks,
 }): ReactElement => {
   return (
     <section className={styles.tasks}>
-      <div className={styles.tasks__header}>
-        <p className={styles.tasks__title}>TODOS</p>
-        <Button action="save" onClick={saveTasks}>
-          Save tasks
-        </Button>
-      </div>
+      <div className={styles.tasks__title}>TODOS</div>
       <ul className={styles.tasks__list}>
         {tasks.map((task) => {
           if (taskIdForEdit && task.id === taskIdForEdit)
