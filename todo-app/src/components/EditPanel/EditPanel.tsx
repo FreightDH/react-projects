@@ -1,14 +1,17 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
+import useTask from '../../utils/contexts/useTask';
+
 import Input from '../Input/Input';
-import styles from './EditPanel.module.scss';
 import Button from '../Button/Button';
+
+import styles from './EditPanel.module.scss';
 
 interface EditPanelProps {
   task: Task;
-  editTask: (task: Task) => void;
 }
 
-const EditPanel: React.FC<EditPanelProps> = ({ task, editTask }): ReactElement => {
+const EditPanel: React.FC<EditPanelProps> = ({ task }): ReactElement => {
+  const { editTask } = useTask();
   const [newTask, setNewTask] = useState({ name: task.name, description: task.description });
 
   const onInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {

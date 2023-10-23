@@ -1,15 +1,16 @@
 import React, { ReactElement } from 'react';
-import styles from './TaskItem.module.scss';
+import useTask from '../../../utils/contexts/useTask';
+
 import Button from '../../Button/Button';
+
+import styles from './TaskItem.module.scss';
 
 type TaskProps = {
   task: Task;
-  completeTask: (id: Task['id']) => void;
-  deleteTask: (id: Task['id']) => void;
-  selectTaskForEdit: (id: Task['id']) => void;
 };
 
-const Task: React.FC<TaskProps> = ({ task, completeTask, deleteTask, selectTaskForEdit }): ReactElement => {
+const Task: React.FC<TaskProps> = ({ task }): ReactElement => {
+  const { completeTask, deleteTask, selectTaskForEdit } = useTask();
   const taskNameClass = task.completed ? `${styles.task__name} ${styles.completed}` : `${styles.task__name}`;
 
   return (

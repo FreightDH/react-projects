@@ -2,17 +2,15 @@ import { ChangeEvent, ReactElement, useState } from 'react';
 import styles from './AddSection.module.scss';
 import Button from '../Button/Button';
 import Label from '../Label/Label';
+import useTask from '../../utils/contexts/useTask';
 
 const DEFAULT_TASK = {
   name: '',
   description: '',
 };
 
-interface AddSectionProps {
-  addTask: ({ name, description }: Pick<Task, 'name' | 'description'>) => void;
-}
-
-const AddSection: React.FC<AddSectionProps> = ({ addTask }): ReactElement => {
+const AddSection = (): ReactElement => {
+  const { addTask } = useTask();
   const [task, setTask] = useState(DEFAULT_TASK);
 
   const onInputValueChange = (event: ChangeEvent<HTMLInputElement>) => {
