@@ -54,9 +54,9 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
+  const saveTasks = () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+  };
 
   return (
     <>
@@ -72,6 +72,7 @@ function App() {
               selectTaskForEdit={selectTaskForEdit}
               taskIdForEdit={taskIdForEdit}
               editTask={editTask}
+              saveTasks={saveTasks}
             />
           </div>
         </div>
