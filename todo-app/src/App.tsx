@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AddSection from './components/AddSection/AddSection';
 import TasksSection from './components/TasksSection/TasksSection';
 import styles from './styles/Page.module.scss';
@@ -47,6 +47,17 @@ function App() {
     );
   };
 
+  const saveTasks = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
+
+  useEffect(() => {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
+
   return (
     <>
       <main className={styles.page}>
@@ -61,6 +72,7 @@ function App() {
               selectTaskForEdit={selectTaskForEdit}
               taskIdForEdit={taskIdForEdit}
               editTask={editTask}
+              saveTasks={saveTasks}
             />
           </div>
         </div>
