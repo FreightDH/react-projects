@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useEffect, useMemo, useState } from 'react';
+import { ReactElement, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import TaskContext from './TaskContext';
 
 interface TaskProviderProps {
@@ -11,42 +11,57 @@ const TaskProvider: React.FC<TaskProviderProps> = ({ children }): ReactElement =
   const [tasks, setTasks] = useState(DEFAULT_TODO_LIST);
   const [taskIdForEdit, setTaskIdForEdit] = useState<Task['id'] | null>(null);
 
-  const addTask = ({ name, description }: Pick<Task, 'name' | 'description'>) => {
-    setTasks([...tasks, { id: Date.now(), name, description, completed: false }]);
-  };
+  const addTask = useCallback(
+    ({ name, description }: Pick<Task, 'name' | 'description'>) => {
+      setTasks((prevTasks) => [...prevTasks, { id: Date.now(), name, description, completed: false }]);
+    },
+    [setTasks],
+  );
 
-  const completeTask = (id: Task['id']) => {
-    setTasks(
-      tasks.map((task) => {
-        if (task.id === id) {
-          return { ...task, completed: !task.completed };
-        }
+  const completeTask = useCallback(
+    (id: Task['id']) => {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => {
+          if (task.id === id) {
+            return { ...task, completed: !task.completed };
+          }
 
-        return task;
-      }),
-    );
-  };
+          return task;
+        }),
+      );
+    },
+    [setTasks],
+  );
 
-  const deleteTask = (id: Task['id']) => {
-    setTasks(tasks.filter((task) => task.id !== id));
-  };
+  const deleteTask = useCallback(
+    (id: Task['id']) => {
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+    },
+    [setTasks],
+  );
 
-  const selectTaskForEdit = (id: Task['id']) => {
-    setTaskIdForEdit(id);
-  };
+  const selectTaskForEdit = useCallback(
+    (id: Task['id']) => {
+      setTaskIdForEdit(id);
+    },
+    [setTaskIdForEdit],
+  );
 
-  const editTask = (newTask: Task) => {
-    setTasks(
-      tasks.map((task) => {
-        if (task.id === taskIdForEdit) {
-          setTaskIdForEdit(null);
-          return newTask;
-        }
+  const editTask = useCallback(
+    (newTask: Task) => {
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => {
+          if (task.id === taskIdForEdit) {
+            setTaskIdForEdit(null);
+            return newTask;
+          }
 
-        return task;
-      }),
-    );
-  };
+          return task;
+        }),
+      );
+    },
+    [setTasks, setTaskIdForEdit, taskIdForEdit],
+  );
 
   useEffect(() => {
     const savedTasks = localStorage.getItem('tasks');
@@ -55,9 +70,9 @@ const TaskProvider: React.FC<TaskProviderProps> = ({ children }): ReactElement =
     }
   }, []);
 
-  const saveTasks = () => {
+  const saveTasks = useCallback(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-  };
+  }, [tasks]);
 
   const value = useMemo(
     () => ({
