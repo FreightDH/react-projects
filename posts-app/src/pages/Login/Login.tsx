@@ -7,14 +7,12 @@ const Login = (): ReactElement => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: ChangeEvent<HTMLInputElement>,
+    setValue: (value: string) => void
+  ) => {
     const { value } = event.target;
-    setEmail(value);
-  };
-
-  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setPassword(value);
+    setValue(value);
   };
 
   return (
@@ -25,8 +23,8 @@ const Login = (): ReactElement => {
           <LoginForm
             email={email}
             password={password}
-            handleEmailChange={handleEmailChange}
-            handlePasswordChange={handlePasswordChange}
+            handleEmailChange={(event) => handleChange(event, setEmail)}
+            handlePasswordChange={(event) => handleChange(event, setPassword)}
           />
           <p className={cl.login__text}>
             {`Don't have an account? `}
