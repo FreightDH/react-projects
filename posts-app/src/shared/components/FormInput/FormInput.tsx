@@ -1,10 +1,5 @@
 import { ComponentPropsWithRef, FC, ReactElement } from 'react';
-import {
-  UseFormRegister,
-  FieldValues,
-  FieldErrors,
-  RegisterOptions,
-} from 'react-hook-form';
+import { UseFormRegister, FieldValues, FieldErrors, RegisterOptions } from 'react-hook-form';
 import cl from './FormInput.module.scss';
 
 interface InputProps extends ComponentPropsWithRef<'input'> {
@@ -43,11 +38,7 @@ const Input: FC<InputProps> = ({
         {...register(name, validationSchema)}
         onChange={onChange}
       />
-      {errors && errors[name] && (
-        <span className={cl.input__error}>{`${
-          errors[name]?.message || 'Error!'
-        }`}</span>
-      )}
+      {errors && errors[name] && <span className={cl.input__error}>{`${errors[name]?.message || 'Error!'}`}</span>}
     </div>
   );
 };
