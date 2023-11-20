@@ -1,3 +1,4 @@
+import FormButton from './components/FormButton/FormButton';
 import FormInput from './components/FormInput/FormInput';
 
-export { FormInput };
+export { FormButton, FormInput };

@@ -1,0 +1,18 @@
+.button {
+  margin: 10px 0px 0px 0px;
+  display: inline-block;
+  padding: 5px 15px;
+
+  border-radius: 5px;
+  border: 1px solid #d4d4d4;
+  background-color: #f8f8f8;
+  transition: all 0.3s ease 0s;
+
+  font-weight: 500;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    background-color: #d4d4d4;
+  }
+}
