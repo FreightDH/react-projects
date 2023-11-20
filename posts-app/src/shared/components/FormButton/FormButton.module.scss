@@ -15,4 +15,14 @@
   &:focus {
     background-color: #d4d4d4;
   }
+
+  &.disabled {
+    color: #d4d4d4;
+    cursor: auto;
+
+    &:hover,
+    &:focus {
+      background-color: #f8f8f8;
+    }
+  }
 }
