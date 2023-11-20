@@ -13,7 +13,7 @@ const Login = (): ReactElement => {
   };
 
   return (
-    <main className={cl.login}>
+    <>
       <div className="login__container">
         <div className={cl.login__body}>
           <h1 className={cl.login__title}>Login</h1>
@@ -29,7 +29,7 @@ const Login = (): ReactElement => {
           </p>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

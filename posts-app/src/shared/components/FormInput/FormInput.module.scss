@@ -1,7 +1,10 @@
+@import 'styles/index';
+
 .input {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  @include adaptiveValue('gap', 7, 5);
 
   &__label {
     font-weight: 500;
@@ -14,6 +17,7 @@
 
     font-family: 'Exo 2';
     font-size: 14px;
+    @include adaptiveValue('font-size', 14, 12);
     font-weight: 300;
 
     border: 0.5px solid rgba(#000, 0.6);
@@ -35,6 +39,7 @@
   &__error {
     color: red;
     font-size: 13px;
+    @include adaptiveValue('font-size', 13, 11);
     font-weight: 500;
     text-align: right;
   }

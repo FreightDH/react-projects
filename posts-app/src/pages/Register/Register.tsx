@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
-import RegisterForm from 'widgets/RegisterForm/RegisterForm';
+import { RegisterForm } from 'widgets';
 import cl from './Register.module.scss';
 
 const Register = (): ReactElement => {
@@ -15,8 +15,8 @@ const Register = (): ReactElement => {
   };
 
   return (
-    <main className={cl.register}>
-      <div className="login__container">
+    <>
+      <div className="register__container">
         <div className={cl.register__body}>
           <h1 className={cl.register__title}>Register</h1>
           <RegisterForm
@@ -35,7 +35,7 @@ const Register = (): ReactElement => {
           </p>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

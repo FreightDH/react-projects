@@ -1,9 +1,14 @@
+@import 'styles/index';
+
 .form {
-  min-width: 300px;
+  width: 300px;
+  @include adaptiveValue('width', 300, 250);
 
   display: flex;
   flex-direction: column;
   gap: 15px;
+  @include adaptiveValue('gap', 15, 10);
 
   font-size: 17px;
+  @include adaptiveValue('font-size', 17, 14);
 }
