@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import cl from './App.module.scss';
 
-const App = (): ReactElement => {
+const Home = (): ReactElement => {
   return (
     <>
       <main className={cl.page}>
@@ -13,4 +13,4 @@ const App = (): ReactElement => {
   );
 };
 
-export default App;
+export default Home;
