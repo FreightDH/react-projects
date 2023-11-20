@@ -1,3 +1,5 @@
+import Footer from './Footer/Footer';
 import LoginForm from './LoginForm/LoginForm';
+import RegisterForm from './RegisterForm/RegisterForm';
 
-export { LoginForm };
+export { Footer, LoginForm, RegisterForm };
