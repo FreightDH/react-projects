@@ -1,4 +1,9 @@
-# RadarFrontend
+# TODO App
 
-### Deploys
-- [TODO App](https://freightdh.github.io/RadarFrontend/todo-app/)
+### Tech stack:
+
+- React
+- TypeScript
+- CSS Modules
+
+### Deploy: [link](https://freightdh.github.io/RadarFrontend/posts-app/)
