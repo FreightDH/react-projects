@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import cl from './App.module.scss';
+import cl from './Home.module.scss';
 
 const Home = (): ReactElement => {
   return (

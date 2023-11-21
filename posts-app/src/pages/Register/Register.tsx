@@ -15,7 +15,7 @@ const Register = (): ReactElement => {
   };
 
   return (
-    <>
+    <main className={cl.register}>
       <div className="register__container">
         <div className={cl.register__body}>
           <h1 className={cl.register__title}>Register</h1>
@@ -35,7 +35,7 @@ const Register = (): ReactElement => {
           </p>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

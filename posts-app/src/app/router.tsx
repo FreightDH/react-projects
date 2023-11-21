@@ -5,10 +5,14 @@ import { Login, Register } from '../pages';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
+    <Route>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+      </Route>
+      <Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Route>
     </Route>
   )
 );

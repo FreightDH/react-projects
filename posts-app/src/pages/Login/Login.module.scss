@@ -1,6 +1,10 @@
 @import 'styles/index';
 
 .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &__body {
     width: 400px;
     @include adaptiveValue('width', 400, 290);

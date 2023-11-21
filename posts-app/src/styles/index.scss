@@ -86,6 +86,8 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  background-color: #f8f8f8;
+
   .lock & {
     overflow: hidden;
     touch-action: none;
