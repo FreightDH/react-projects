@@ -1,0 +1,35 @@
+.link {
+  display: block;
+  position: relative;
+
+  font-weight: 500;
+
+  span {
+    position: relative;
+    line-height: 28px;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -1px;
+      width: 0;
+      height: 1px;
+      background-color: #000;
+      transition: all 0.2s ease 0s;
+    }
+  }
+
+  &:hover {
+    span::after {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  &.active {
+    span::after {
+      left: 0;
+      width: 100%;
+    }
+  }
+}
