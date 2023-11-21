@@ -32,6 +32,7 @@
       "shared/*": ["shared/*"],
       "widgets/*": ["widgets/*"],
       "features/*": ["features/*"],
+      "assets/*": ["assets/*"],
       "styles/*": ["styles/*"]
     }
   },
