@@ -4,7 +4,7 @@ import { profile } from 'assets';
 import cl from './Profile.module.scss';
 
 const Profile = (): ReactElement => {
-  const [dropdownOpen, setDropdownOpen] = useState(true);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
     <div className={cl.profile} onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>

@@ -27,7 +27,10 @@
   }
 
   &.active {
+    font-weight: 600;
+
     span::after {
+      height: 1.5px;
       left: 0;
       width: 100%;
     }
