@@ -1,0 +1,30 @@
+@import 'styles/index';
+
+.header {
+  padding: 10px 0;
+  background-color: #ced4da;
+
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    @media (max-width: $mobile) {
+      flex-direction: row-reverse;
+    }
+  }
+}
