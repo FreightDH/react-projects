@@ -1,0 +1,40 @@
+.posts {
+  // min-width: 1280px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__list {
+    padding: 15px 0px 0px 0px;
+
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.list {
+  &__header {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #ced4da;
+
+    font-weight: 700;
+  }
+}
+
+.header {
+  &__number {
+    flex: 0 0 5%;
+  }
+
+  &__title {
+    flex: 0 0 30%;
+  }
+
+  &__body {
+    flex: 1 1 auto;
+  }
+}
