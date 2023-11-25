@@ -4,9 +4,10 @@ import cl from './PostList.module.scss';
 
 interface PostListProps {
   posts: Post[] | null;
+  deletePost: (postId: number) => void;
 }
 
-const PostList: FC<PostListProps> = ({ posts }): ReactElement => {
+const PostList: FC<PostListProps> = ({ posts, deletePost }): ReactElement => {
   if (!posts || !posts.length) {
     return (
       <h1 className={cl.posts__title} style={{ textAlign: 'center' }}>
@@ -16,7 +17,6 @@ const PostList: FC<PostListProps> = ({ posts }): ReactElement => {
   }
 
   const editPost = () => {};
-  const deletePost = () => {};
 
   return (
     <div className={cl.posts}>

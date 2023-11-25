@@ -1,3 +1,5 @@
+@import 'styles/index';
+
 .post {
   padding: 15px;
 
@@ -7,12 +9,22 @@
   border-top: 1px solid #ced4da;
   cursor: pointer;
 
+  @media (max-width: $mobile) {
+    display: block;
+  }
+
   &:nth-child(even) {
     background-color: #ededed;
   }
 
   &__number {
     flex: 0 0 5%;
+
+    @media (max-width: $mobile) {
+      display: inline-block;
+      font-weight: 600;
+      @include adaptiveValue('font-size', 16, 13);
+    }
   }
 
   &__title {
@@ -21,6 +33,14 @@
 
     &::first-letter {
       text-transform: uppercase;
+    }
+
+    @media (max-width: $mobile) {
+      display: inline-block;
+      margin: 0px 0px 0px 10px;
+      @include adaptiveValue('margin-left', 10, 5);
+      font-weight: 600;
+      @include adaptiveValue('font-size', 16, 13);
     }
   }
 
@@ -32,11 +52,21 @@
     &::first-letter {
       text-transform: uppercase;
     }
+
+    @media (max-width: $mobile) {
+      padding: 10px 0;
+      @include adaptiveValue('font-size', 16, 13);
+    }
   }
 
   &__buttons {
     display: flex;
     gap: 30px;
+
+    @media (max-width: $mobile) {
+      justify-content: flex-end;
+      gap: 15px;
+    }
   }
 
   &__button {
