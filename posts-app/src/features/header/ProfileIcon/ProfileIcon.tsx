@@ -1,9 +1,9 @@
 import { ReactElement, useState } from 'react';
 import { Dropdown } from 'shared';
 import { profile } from 'assets';
-import cl from './Profile.module.scss';
+import cl from './ProfileIcon.module.scss';
 
-const Profile = (): ReactElement => {
+const ProfileIcon = (): ReactElement => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
@@ -16,4 +16,4 @@ const Profile = (): ReactElement => {
   );
 };
 
-export default Profile;
+export default ProfileIcon;
