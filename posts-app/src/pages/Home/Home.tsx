@@ -10,6 +10,11 @@ const Home = (): ReactElement => {
     setPosts(data);
   });
 
+  const deletePost = async (postId: number) => {
+    await PostService.delete(postId);
+    setPosts(posts && posts.filter((post) => post.id !== postId));
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -17,7 +22,7 @@ const Home = (): ReactElement => {
   return (
     <>
       <div className="page__container">
-        <div className={cl.page__body}>{<PostList posts={posts} />}</div>
+        <div className={cl.page__body}>{<PostList posts={posts} deletePost={deletePost} />}</div>
       </div>
     </>
   );
