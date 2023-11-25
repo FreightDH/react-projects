@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { logo } from 'assets';
-import { Menu, Profile } from '..';
+import { Menu, ProfileIcon } from 'features';
 import cl from './Header.module.scss';
 
 const Header = (): ReactElement => {
@@ -13,7 +13,7 @@ const Header = (): ReactElement => {
           </div>
           <div className={cl.header__content}>
             <Menu />
-            <Profile />
+            <ProfileIcon />
           </div>
         </div>
       </div>

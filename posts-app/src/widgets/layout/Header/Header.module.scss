@@ -14,6 +14,8 @@
     img {
       width: 60px;
       height: 60px;
+      @include adaptiveValue('width', 60, 45);
+      @include adaptiveValue('height', 60, 45);
       object-fit: contain;
     }
   }
