@@ -3,11 +3,11 @@ import cl from './EditModal.module.scss';
 
 interface EditModalProps {
   post: Post;
-  setEditModalOpen: (isOpen: boolean) => void;
+  setEditVisible: (isOpen: boolean) => void;
   editPost: (editedPost: Post) => void;
 }
 
-const EditModal: FC<EditModalProps> = ({ post, setEditModalOpen, editPost }): ReactElement => {
+const EditModal: FC<EditModalProps> = ({ post, setEditVisible, editPost }): ReactElement => {
   const [newTitle, setNewTitle] = useState(post.title);
   const [newBody, setNewBody] = useState(post.body);
   const modalClasses = [cl.edit];
@@ -22,13 +22,13 @@ const EditModal: FC<EditModalProps> = ({ post, setEditModalOpen, editPost }): Re
 
   const handleClose = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setEditModalOpen(false);
+    setEditVisible(false);
   };
 
   const handleUpdate = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     editPost({ ...post, title: newTitle, body: newBody });
-    setEditModalOpen(false);
+    setEditVisible(false);
   };
 
   return (

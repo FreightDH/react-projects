@@ -1,20 +1,23 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { EditModal, PostService, useFetching } from 'shared';
+
+import { EditModal, PostService, usePagination } from 'shared';
+import { Pagination } from 'features';
 import { PostList } from 'widgets';
+
 import cl from './Home.module.scss';
 
 const Home = (): ReactElement => {
   const [posts, setPosts] = useState<Post[] | null>(null);
-  const [fetchData] = useFetching(async () => {
-    const data = await PostService.getAll();
-    setPosts(data);
-  });
-  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+  const [data, totalPages] = usePagination(currentPage, postsPerPage);
+
+  const [editVisible, setEditVisible] = useState(false);
   const [editSelectedPost, setEditSelectedPost] = useState<Post | null>(null);
 
   const setEdit = (post: Post) => {
     setEditSelectedPost(post);
-    setEditModalOpen(true);
+    setEditVisible(true);
   };
 
   const editPost = async (editedPost: Post) => {
@@ -37,18 +40,23 @@ const Home = (): ReactElement => {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    setPosts(data);
+  }, [data]);
 
   return (
     <>
       <div className="page__container">
         <div className={cl.page__body}>
           <PostList posts={posts} deletePost={deletePost} setEdit={setEdit} />
-          {editModalOpen ? (
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+          {editVisible ? (
             <EditModal
               post={editSelectedPost!}
-              setEditModalOpen={setEditModalOpen}
+              setEditVisible={setEditVisible}
               editPost={editPost}
             />
           ) : (
