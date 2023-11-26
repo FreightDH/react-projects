@@ -23,4 +23,8 @@ const getSearchPath = (searchQueries: Record<string, string | null>) => {
   return path.join('&');
 };
 
-export { isEmpty, getArrayFromRange, getSearchPath };
+const getTotalPages = (totalItems: number, itemsPerPage: number) => {
+  return Math.ceil(totalItems / itemsPerPage);
+};
+
+export { isEmpty, getArrayFromRange, getTotalPages, getSearchPath };

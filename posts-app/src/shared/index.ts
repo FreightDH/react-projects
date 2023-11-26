@@ -6,9 +6,10 @@ import EditModal from './components/EditModal/EditModal';
 import FormButton from './components/FormButton/FormButton';
 import FormInput from './components/FormInput/FormInput';
 
-import { getArrayFromRange, getSearchPath, isEmpty } from './functions';
+import { getArrayFromRange, getSearchPath, getTotalPages, isEmpty } from './functions';
 
 import useFetching from './hooks/useFetching';
+import usePagination from './hooks/usePagination';
 import useParamsObject from './hooks/useParamsObject';
 
 export {
@@ -20,7 +21,9 @@ export {
   FormInput,
   getArrayFromRange,
   getSearchPath,
+  getTotalPages,
   isEmpty,
   useFetching,
+  usePagination,
   useParamsObject,
 };
