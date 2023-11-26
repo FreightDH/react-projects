@@ -7,7 +7,11 @@ const ProfileIcon = (): ReactElement => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <div className={cl.profile} onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
+    <div
+      className={cl.profile}
+      onMouseEnter={() => setDropdownOpen(true)}
+      onMouseLeave={() => setDropdownOpen(false)}
+    >
       <div className={cl.profile__icon}>
         <img src={profile} alt="profile-icon" />
       </div>

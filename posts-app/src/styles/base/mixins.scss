@@ -14,7 +14,14 @@
 }
 
 // Адаптивное свойство (clamp)
-@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
+@mixin adaptiveValue(
+  $property,
+  $startSize,
+  $minSize,
+  $widthFrom: $containerWidth,
+  $widthTo: $minWidth,
+  $keepSize: 0
+) {
   @if ($startSize == 0) {
     $startSize: 0.000001;
   }
@@ -64,7 +71,15 @@
   }
 
   // Устанавливаем значения по умолчанию
-  @if $widthFrom != $containerWidth and $widthFrom != $maxWidth and $keepSize != 1 and $keepSize != 2 {
+  @if $widthFrom !=
+    $containerWidth and
+    $widthFrom !=
+    $maxWidth and
+    $keepSize !=
+    1 and
+    $keepSize !=
+    2
+  {
     @media (min-width: $widthFromMedia) {
       #{$property}: inherit;
     }

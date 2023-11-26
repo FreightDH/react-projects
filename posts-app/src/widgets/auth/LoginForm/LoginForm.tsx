@@ -12,7 +12,12 @@ interface LoginFormProps {
   handlePasswordChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const LoginForm: FC<LoginFormProps> = ({ email, password, handleEmailChange, handlePasswordChange }): ReactElement => {
+const LoginForm: FC<LoginFormProps> = ({
+  email,
+  password,
+  handleEmailChange,
+  handlePasswordChange,
+}): ReactElement => {
   const {
     register,
     formState: { errors, isValid },
