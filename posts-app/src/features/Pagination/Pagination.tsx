@@ -1,10 +1,11 @@
 import { FC, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { getArrayFromRange, getSearchPath, useParamsObject } from '../../shared';
+import { getArrayFromRange, getSearchPath, getTotalPages, useParamsObject } from '../../shared';
 import cl from './Pagination.module.scss';
 
 interface PaginationProps {
-  totalPages: number;
+  totalItems: number;
+  postsPerPage: number;
   currentPage: number;
   setCurrentPage: (page: number) => void;
 }
@@ -12,7 +13,7 @@ interface PaginationProps {
 const LEFT_ARROW = 'LEFT';
 const RIGHT_ARROW = 'RIGHT';
 
-const Pagination: FC<PaginationProps> = ({ totalPages, currentPage, setCurrentPage }) => {
+const Pagination: FC<PaginationProps> = ({ totalItems, postsPerPage, currentPage, setCurrentPage }) => {
   const searchQueries = useParamsObject();
 
   const getPageNumbers = (totalPages: number, currentPage: number, pageNeighbours: number) => {
@@ -54,6 +55,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, currentPage, setCurrentPa
     return getArrayFromRange(1, totalPages);
   };
 
+  const totalPages = getTotalPages(totalItems, postsPerPage);
   const pageNumbers = getPageNumbers(totalPages, currentPage, 2);
 
   const prevPage = () => {

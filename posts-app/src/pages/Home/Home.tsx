@@ -1,22 +1,39 @@
 import { ReactElement, useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { Pagination } from 'features';
-import { EditModal, PostList } from 'widgets';
+import { PostForm, PostList } from 'widgets';
 import { Loader, PostService, usePagination } from 'shared';
 
 import cl from './Home.module.scss';
 
 const Home = (): ReactElement => {
-  const [posts, setPosts] = useState<Post[] | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams] = useSearchParams();
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [totalPosts, setTotalPosts] = useState(0);
+  const [currentPage, setCurrentPage] = useState(() => {
+    const page = searchParams.get('page');
+    if (!page) return 1;
+    return +page;
+  });
   const [postsPerPage] = useState(10);
-  const [data, totalPages, isPostsLoading] = usePagination(currentPage, postsPerPage);
+  const [data, totalItems, isPostsLoading] = usePagination(currentPage, postsPerPage);
 
   const [editVisible, setEditVisible] = useState(false);
-  const [editSelectedPost, setEditSelectedPost] = useState<Post | null>(null);
+  const [addVisible, setAddVisible] = useState(false);
+  const [postToEdit, setPostToEdit] = useState<Post | null>(null);
+
+  const addPost = async (title: string, body: string) => {
+    const id = totalPosts + 1;
+    const userId = 19042003;
+
+    await PostService.add(userId, id, title, body);
+    setPosts([...posts, { userId, id, title, body }]);
+    setTotalPosts(id);
+  };
 
   const setEdit = (post: Post) => {
-    setEditSelectedPost(post);
+    setPostToEdit(post);
     setEditVisible(true);
   };
 
@@ -41,7 +58,8 @@ const Home = (): ReactElement => {
 
   useEffect(() => {
     setPosts(data);
-  }, [data]);
+    setTotalPosts(+totalItems);
+  }, [data, totalItems]);
 
   return (
     <>
@@ -51,16 +69,28 @@ const Home = (): ReactElement => {
             <Loader />
           ) : (
             <>
-              <PostList posts={posts} deletePost={deletePost} setEdit={setEdit} />
-              <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+              <PostList
+                posts={posts}
+                setAddVisible={setAddVisible}
+                setEdit={setEdit}
+                deletePost={deletePost}
+              />
+              <Pagination
+                totalItems={totalPosts}
+                postsPerPage={postsPerPage}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
             </>
           )}
 
           {editVisible ? (
-            <EditModal post={editSelectedPost!} setEditVisible={setEditVisible} editPost={editPost} />
+            <PostForm mode="edit" post={postToEdit!} setVisible={setEditVisible} editPost={editPost} />
           ) : (
             <></>
           )}
+
+          {addVisible ? <PostForm mode="add" setVisible={setAddVisible} addPost={addPost} /> : <></>}
         </div>
       </div>
     </>
