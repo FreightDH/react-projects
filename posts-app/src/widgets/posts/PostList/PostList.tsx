@@ -26,14 +26,8 @@ const PostList: FC<PostListProps> = ({ posts, setEdit, deletePost }): ReactEleme
           <div className={cl.header__title}>Title</div>
           <div className={cl.header__body}>Text</div>
         </li>
-        {posts.map((post, index) => (
-          <PostItem
-            number={index + 1}
-            post={post}
-            setEdit={setEdit}
-            deletePost={deletePost}
-            key={post.id}
-          />
+        {posts.map((post) => (
+          <PostItem post={post} setEdit={setEdit} deletePost={deletePost} key={post.id} />
         ))}
       </ul>
     </div>

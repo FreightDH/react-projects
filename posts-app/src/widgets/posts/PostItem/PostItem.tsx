@@ -4,18 +4,17 @@ import cl from './PostItem.module.scss';
 
 interface PostItemProps {
   post: Post;
-  number: number;
   setEdit: (post: Post) => void;
   deletePost: (postId: number) => void;
 }
 
-const PostItem: FC<PostItemProps> = ({ post, number, setEdit, deletePost }): ReactElement => {
+const PostItem: FC<PostItemProps> = ({ post, setEdit, deletePost }): ReactElement => {
   const postTitle = post.title.slice(0, 30);
   const postBody = `${post.body.slice(0, 90)}${post.body.length > 90 ? '...' : ''}`;
 
   return (
     <li className={cl.post}>
-      <div className={cl.post__number}>{number}</div>
+      <div className={cl.post__number}>{post.id}</div>
       <div className={cl.post__title}>{postTitle}</div>
       <p className={cl.post__body}>{postBody}</p>
       <div className={cl.post__buttons}>
