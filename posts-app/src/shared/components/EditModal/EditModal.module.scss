@@ -1,0 +1,110 @@
+.edit {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  background-color: rgba(0, 0, 0, 0.7);
+
+  &__body {
+    min-height: 100%;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    min-width: 450px;
+    padding: 25px 0;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  &__title {
+    padding: 0 15px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__close {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__divider {
+    margin: 15px 0 20px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #dee2e6;
+  }
+
+  &__form {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+.form {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  &__label {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__input {
+    padding: 5px 7px;
+    font-size: 14px;
+
+    resize: vertical;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease 0s;
+
+    &:focus {
+      box-shadow: 0px 0px 10px 1px rgba(34, 60, 80, 0.2);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    display: inline-block;
+    padding: 10px;
+
+    color: #fff;
+    border-radius: 5px;
+    background-color: rgba(#0466c8, 0.8);
+    transition: all 0.2s ease 0s;
+
+    &.close {
+      background-color: #d90429;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

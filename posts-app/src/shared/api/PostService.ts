@@ -6,10 +6,15 @@ class PostService {
     return res.data;
   };
 
-  static delete = async (postId: number) => {
-    await axios.get(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
-      method: 'DELETE',
+  static edit = async (postId: number, title: string, body: string) => {
+    await axios.patch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+      title,
+      body,
     });
+  };
+
+  static delete = async (postId: number) => {
+    await axios.delete(`https://jsonplaceholder.typicode.com/posts/${postId}`);
   };
 }
 
