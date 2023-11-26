@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 
-import { EditModal, PostService, usePagination } from 'shared';
+import { EditModal, Loader, PostService, usePagination } from 'shared';
 import { Pagination } from 'features';
 import { PostList } from 'widgets';
 
@@ -10,7 +10,7 @@ const Home = (): ReactElement => {
   const [posts, setPosts] = useState<Post[] | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-  const [data, totalPages] = usePagination(currentPage, postsPerPage);
+  const [data, totalPages, isPostsLoading] = usePagination(currentPage, postsPerPage);
 
   const [editVisible, setEditVisible] = useState(false);
   const [editSelectedPost, setEditSelectedPost] = useState<Post | null>(null);
@@ -47,18 +47,16 @@ const Home = (): ReactElement => {
     <>
       <div className="page__container">
         <div className={cl.page__body}>
-          <PostList posts={posts} deletePost={deletePost} setEdit={setEdit} />
-          <Pagination
-            totalPages={totalPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+          {isPostsLoading || !posts ? (
+            <Loader />
+          ) : (
+            <PostList posts={posts} deletePost={deletePost} setEdit={setEdit} />
+          )}
+
+          <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+
           {editVisible ? (
-            <EditModal
-              post={editSelectedPost!}
-              setEditVisible={setEditVisible}
-              editPost={editPost}
-            />
+            <EditModal post={editSelectedPost!} setEditVisible={setEditVisible} editPost={editPost} />
           ) : (
             <></>
           )}

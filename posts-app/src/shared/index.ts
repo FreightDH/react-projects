@@ -5,6 +5,7 @@ import Dropdown from './components/Dropdown/Dropdown';
 import EditModal from './components/EditModal/EditModal';
 import FormButton from './components/FormButton/FormButton';
 import FormInput from './components/FormInput/FormInput';
+import Loader from './components/Loader/Loader';
 
 import { getArrayFromRange, getSearchPath, getTotalPages, isEmpty } from './functions';
 
@@ -19,6 +20,7 @@ export {
   EditModal,
   FormButton,
   FormInput,
+  Loader,
   getArrayFromRange,
   getSearchPath,
   getTotalPages,
