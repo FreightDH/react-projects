@@ -1,8 +1,8 @@
 import { ReactElement, useEffect, useState } from 'react';
 
-import { EditModal, Loader, PostService, usePagination } from 'shared';
 import { Pagination } from 'features';
-import { PostList } from 'widgets';
+import { EditModal, PostList } from 'widgets';
+import { Loader, PostService, usePagination } from 'shared';
 
 import cl from './Home.module.scss';
 
