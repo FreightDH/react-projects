@@ -1,16 +1,17 @@
 import { ChangeEvent, FC, MouseEvent, ReactElement, useState } from 'react';
-import cl from './EditModal.module.scss';
+import cl from './PostForm.module.scss';
 
-interface EditModalProps {
-  post: Post;
-  setEditVisible: (isOpen: boolean) => void;
-  editPost: (editedPost: Post) => void;
+interface PostFormProps {
+  mode: 'add' | 'edit';
+  post?: Post;
+  setVisible: (isVisible: boolean) => void;
+  addPost?: (title: string, body: string) => void;
+  editPost?: (editedPost: Post) => void;
 }
 
-const EditModal: FC<EditModalProps> = ({ post, setEditVisible, editPost }): ReactElement => {
-  const [newTitle, setNewTitle] = useState(post.title);
-  const [newBody, setNewBody] = useState(post.body);
-  const modalClasses = [cl.edit];
+const PostForm: FC<PostFormProps> = ({ mode, post, setVisible, addPost, editPost }): ReactElement => {
+  const [newTitle, setNewTitle] = useState(post?.title || '');
+  const [newBody, setNewBody] = useState(post?.body || '');
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -22,22 +23,32 @@ const EditModal: FC<EditModalProps> = ({ post, setEditVisible, editPost }): Reac
 
   const handleClose = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    setEditVisible(false);
+    setVisible(false);
   };
 
-  const handleUpdate = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    editPost({ ...post, title: newTitle, body: newBody });
-    setEditVisible(false);
+
+    switch (mode) {
+      case 'edit':
+        editPost!({ ...post!, title: newTitle, body: newBody });
+        break;
+
+      case 'add':
+        addPost!(newTitle, newBody);
+        break;
+    }
+
+    setVisible(false);
   };
 
   return (
-    <div className={modalClasses.join(' ')}>
-      <div className={cl.edit__body}>
-        <div className={cl.edit__content}>
-          <h3 className={cl.edit__title}>Edit post</h3>
-          <div className={cl.edit__divider}></div>
-          <form action="#" className={cl.edit__form}>
+    <div className={cl.popup}>
+      <div className={cl.popup__body}>
+        <div className={cl.popup__content}>
+          <h3 className={cl.popup__title}>{`${mode === 'edit' ? 'Edit' : 'Add'} post`}</h3>
+          <div className={cl.popup__divider}></div>
+          <form action="#" className={cl.popup__form}>
             <div className={cl.form__item}>
               <label className={cl.form__label}>Title</label>
               <input
@@ -57,8 +68,8 @@ const EditModal: FC<EditModalProps> = ({ post, setEditVisible, editPost }): Reac
               ></textarea>
             </div>
             <div className={cl.form__buttons}>
-              <button className={cl.form__button} onClick={handleUpdate}>
-                Update
+              <button className={cl.form__button} onClick={handleSubmit}>
+                {`${mode === 'edit' ? 'Update' : 'Add'}`}
               </button>
               <button className={`${cl.form__button} ${cl.close}`} onClick={handleClose}>
                 Close
@@ -71,4 +82,4 @@ const EditModal: FC<EditModalProps> = ({ post, setEditVisible, editPost }): Reac
   );
 };
 
-export default EditModal;
+export default PostForm;
