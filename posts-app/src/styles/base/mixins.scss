@@ -71,15 +71,7 @@
   }
 
   // Устанавливаем значения по умолчанию
-  @if $widthFrom !=
-    $containerWidth and
-    $widthFrom !=
-    $maxWidth and
-    $keepSize !=
-    1 and
-    $keepSize !=
-    2
-  {
+  @if $widthFrom != $containerWidth and $widthFrom != $maxWidth and $keepSize != 1 and $keepSize != 2 {
     @media (min-width: $widthFromMedia) {
       #{$property}: inherit;
     }

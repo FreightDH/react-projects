@@ -15,10 +15,7 @@ const useFetching = (requestCallback: (currentPage: number, itemsPerPage: number
     }
   };
 
-  return [fetchData, isLoading] as [
-    (currentPage: number, itemsPerPage: number) => Promise<void>,
-    boolean,
-  ];
+  return [fetchData, isLoading] as [(currentPage: number, itemsPerPage: number) => Promise<void>, boolean];
 };
 
 export default useFetching;

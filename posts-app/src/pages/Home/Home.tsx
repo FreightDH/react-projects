@@ -50,10 +50,11 @@ const Home = (): ReactElement => {
           {isPostsLoading || !posts ? (
             <Loader />
           ) : (
-            <PostList posts={posts} deletePost={deletePost} setEdit={setEdit} />
+            <>
+              <PostList posts={posts} deletePost={deletePost} setEdit={setEdit} />
+              <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            </>
           )}
-
-          <Pagination totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
           {editVisible ? (
             <EditModal post={editSelectedPost!} setEditVisible={setEditVisible} editPost={editPost} />

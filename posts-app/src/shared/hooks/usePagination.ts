@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { PostService, getTotalPages, useFetching } from '..';
 
-const usePagination = (
-  currentPage: number,
-  itemsPerPage: number
-): [Post[] | null, number, boolean] => {
+const usePagination = (currentPage: number, itemsPerPage: number): [Post[] | null, number, boolean] => {
   const [data, setData] = useState<Post[] | null>(null);
   const [totalPages, setTotalPages] = useState(0);
 
@@ -17,6 +14,7 @@ const usePagination = (
 
   useEffect(() => {
     fetchData(currentPage, itemsPerPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, itemsPerPage]);
 
   return [data, totalPages, isLoading];

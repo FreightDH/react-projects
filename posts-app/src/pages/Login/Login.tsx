@@ -7,10 +7,7 @@ const Login = (): ReactElement => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    setValue: (value: string) => void
-  ) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>, setValue: (value: string) => void) => {
     const { value } = event.target;
     setValue(value);
   };
