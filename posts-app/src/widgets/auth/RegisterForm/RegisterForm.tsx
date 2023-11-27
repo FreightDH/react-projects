@@ -35,7 +35,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    navigate('/');
+    navigate('/posts');
     reset();
   };
 

@@ -27,7 +27,7 @@ const LoginForm: FC<LoginFormProps> = ({
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    navigate('/');
+    navigate('/posts');
     reset();
   };
 

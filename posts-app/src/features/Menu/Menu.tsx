@@ -22,8 +22,7 @@ const Menu = (): ReactElement => {
       <nav className={menuBodyClasses.join(' ')}>
         <ul className={cl.menu__list}>
           <CustomLink to="/">Home</CustomLink>
-          <CustomLink to="/login">Login</CustomLink>
-          <CustomLink to="/register">Register</CustomLink>
+          <CustomLink to="/posts">Posts</CustomLink>
         </ul>
       </nav>
     </div>

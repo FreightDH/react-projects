@@ -15,7 +15,7 @@ const PostItem: FC<PostItemProps> = ({ post, setEdit, deletePost }): ReactElemen
   const postBody = `${post.body.slice(0, 90)}${post.body.length > 90 ? '...' : ''}`;
 
   return (
-    <li className={cl.post} onClick={() => navigate(`/${post.id}`)}>
+    <li className={cl.post} onClick={() => navigate(`/posts/${post.id}`)}>
       <div className={cl.post__number}>{post.id}</div>
       <div className={cl.post__title}>{postTitle}</div>
       <p className={cl.post__body}>{postBody}</p>
