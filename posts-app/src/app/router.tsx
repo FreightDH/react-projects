@@ -1,18 +1,19 @@
-import { Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import Home from 'pages/Home/Home';
+import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Layout from './layout/Layout';
-import { Login, Register } from '../pages';
+import { HomePage, LoginPage, PostPage, RegisterPage } from '../pages';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<HomePage />} />
+        <Route path="/:id" element={<PostPage />} />
       </Route>
       <Route>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<RegisterPage />} />
       </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Route>
   )
 );

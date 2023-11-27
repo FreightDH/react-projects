@@ -1,4 +1,6 @@
-import Login from './Login/Login';
-import Register from './Register/Register';
+import HomePage from './HomePage/HomePage';
+import LoginPage from './LoginPage/LoginPage';
+import PostPage from './PostPage/PostPage';
+import RegisterPage from './RegisterPage/RegisterPage';
 
-export { Login, Register };
+export { HomePage, LoginPage, PostPage, RegisterPage };
