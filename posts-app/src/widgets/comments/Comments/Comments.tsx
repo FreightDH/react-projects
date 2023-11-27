@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
+import { LoaderDots } from 'shared';
 import CommentsItem from '../CommentsItem/CommentsItem';
 import cl from './Comments.module.scss';
-import { LoaderDots } from 'shared/index';
 
 interface CommentsProps {
   comments: Commentary[] | null;

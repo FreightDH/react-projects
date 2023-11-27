@@ -1,19 +1,26 @@
-import { FC, MouseEvent } from 'react';
+import { CSSProperties, FC, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { getArrayFromRange, getSearchPath, getTotalPages, useParamsObject } from '../../shared';
 import cl from './Pagination.module.scss';
 
 interface PaginationProps {
   totalItems: number;
-  postsPerPage: number;
   currentPage: number;
+  itemsPerPage: number;
   setCurrentPage: (page: number) => void;
+  style?: CSSProperties;
 }
 
 const LEFT_ARROW = 'LEFT';
 const RIGHT_ARROW = 'RIGHT';
 
-const Pagination: FC<PaginationProps> = ({ totalItems, postsPerPage, currentPage, setCurrentPage }) => {
+const Pagination: FC<PaginationProps> = ({
+  totalItems,
+  itemsPerPage,
+  currentPage,
+  setCurrentPage,
+  style,
+}) => {
   const searchQueries = useParamsObject();
 
   const getPageNumbers = (totalPages: number, currentPage: number, pageNeighbours: number) => {
@@ -55,7 +62,7 @@ const Pagination: FC<PaginationProps> = ({ totalItems, postsPerPage, currentPage
     return getArrayFromRange(1, totalPages);
   };
 
-  const totalPages = getTotalPages(totalItems, postsPerPage);
+  const totalPages = getTotalPages(totalItems, itemsPerPage);
   const pageNumbers = getPageNumbers(totalPages, currentPage, 2);
 
   const prevPage = () => {
@@ -74,7 +81,7 @@ const Pagination: FC<PaginationProps> = ({ totalItems, postsPerPage, currentPage
   };
 
   return (
-    <ul className={cl.pagination}>
+    <ul className={cl.pagination} style={style}>
       {pageNumbers.map((number) => {
         switch (true) {
           case number === LEFT_ARROW: {

@@ -36,8 +36,13 @@ class PostService {
     await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
   };
 
-  static getCommentsById = async (id: number) => {
-    const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+  static getCommentsById = async (id: number, currentPage: number, commentsPerPage: number) => {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`, {
+      params: {
+        _page: currentPage,
+        _limit: commentsPerPage,
+      },
+    });
     return res;
   };
 }

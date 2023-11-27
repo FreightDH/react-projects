@@ -9,8 +9,8 @@ import LoaderDots from './components/Loaders/LoaderDots';
 
 import { getArrayFromRange, getSearchPath, getTotalPages, isEmpty } from './functions';
 
+import useCurrentPage from './hooks/useCurrentPage';
 import useFetching from './hooks/useFetching';
-import usePagination from './hooks/usePagination';
 import useParamsObject from './hooks/useParamsObject';
 
 export {
@@ -25,7 +25,7 @@ export {
   getSearchPath,
   getTotalPages,
   isEmpty,
+  useCurrentPage,
   useFetching,
-  usePagination,
   useParamsObject,
 };

@@ -2,13 +2,18 @@ import { ReactElement, useEffect, useState } from 'react';
 
 import { Pagination } from 'features';
 import { PostForm, PostList } from 'widgets';
-import { LoaderCircle, PostService, useCurrentPage, usePagination } from 'shared';
+import { LoaderCircle, PostService, useCurrentPage, useFetching } from 'shared';
 
 const HomePage = (): ReactElement => {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useCurrentPage();
   const [postsPerPage] = useState(10);
-  const [data, totalItems, setTotalItems, isPostsLoading] = usePagination(currentPage, postsPerPage);
+  const [fetchPosts, isPostsLoading] = useFetching(async (currentPage: number, itemsPerPage: number) => {
+    const res = await PostService.getAll(currentPage, itemsPerPage);
+    setPosts(res.data);
+    setTotalItems(res.headers['x-total-count']);
+  });
 
   const [editVisible, setEditVisible] = useState(false);
   const [addVisible, setAddVisible] = useState(false);
@@ -48,8 +53,8 @@ const HomePage = (): ReactElement => {
   };
 
   useEffect(() => {
-    setPosts(data);
-  }, [data]);
+    fetchPosts(currentPage, postsPerPage);
+  }, [currentPage, postsPerPage]);
 
   return (
     <>
@@ -60,8 +65,8 @@ const HomePage = (): ReactElement => {
           <PostList posts={posts} setAddVisible={setAddVisible} setEdit={setEdit} deletePost={deletePost} />
           <Pagination
             totalItems={totalItems}
-            postsPerPage={postsPerPage}
             currentPage={currentPage}
+            itemsPerPage={postsPerPage}
             setCurrentPage={setCurrentPage}
           />
         </>
