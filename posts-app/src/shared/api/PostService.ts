@@ -35,6 +35,11 @@ class PostService {
   static delete = async (id: number) => {
     await axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`);
   };
+
+  static getCommentsById = async (id: number) => {
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+    return res;
+  };
 }
 
 export default PostService;

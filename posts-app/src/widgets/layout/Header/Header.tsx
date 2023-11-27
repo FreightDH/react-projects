@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import { Link } from 'react-router-dom';
 import { logo } from 'assets';
 import { Menu, ProfileIcon } from 'features';
 import cl from './Header.module.scss';
@@ -9,7 +10,9 @@ const Header = (): ReactElement => {
       <div className="header__container">
         <div className={cl.header__body}>
           <div className={cl.header__logo}>
-            <img src={logo} alt="logo" />
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
           </div>
           <div className={cl.header__content}>
             <Menu />
