@@ -5,7 +5,7 @@ import { Pagination } from 'features';
 import { PostForm, PostList } from 'widgets';
 import { Loader, PostService, usePagination } from 'shared';
 
-const Home = (): ReactElement => {
+const HomePage = (): ReactElement => {
   const [searchParams] = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
   const [totalPosts, setTotalPosts] = useState(0);
@@ -86,4 +86,4 @@ const Home = (): ReactElement => {
   );
 };
 
-export default Home;
+export default HomePage;

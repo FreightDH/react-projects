@@ -1,9 +1,9 @@
 import { ChangeEvent, ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RegisterForm } from 'widgets';
-import cl from './Register.module.scss';
+import cl from './RegisterPage.module.scss';
 
-const Register = (): ReactElement => {
+const RegisterPage = (): ReactElement => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -39,4 +39,4 @@ const Register = (): ReactElement => {
   );
 };
 
-export default Register;
+export default RegisterPage;

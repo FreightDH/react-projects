@@ -1,9 +1,9 @@
 import { ChangeEvent, ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LoginForm } from 'widgets';
-import cl from './Login.module.scss';
+import cl from './LoginPage.module.scss';
 
-const Login = (): ReactElement => {
+const LoginPage = (): ReactElement => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,4 +33,4 @@ const Login = (): ReactElement => {
   );
 };
 
-export default Login;
+export default LoginPage;
