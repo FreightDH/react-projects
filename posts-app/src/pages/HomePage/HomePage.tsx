@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { Pagination } from 'features';
 import { PostForm, PostList } from 'widgets';
-import { Loader, PostService, usePagination } from 'shared';
+import { LoaderCircle, PostService, usePagination } from 'shared';
 
 const HomePage = (): ReactElement => {
   const [searchParams] = useSearchParams();
@@ -62,7 +62,7 @@ const HomePage = (): ReactElement => {
   return (
     <>
       {isPostsLoading || !posts ? (
-        <Loader />
+        <LoaderCircle />
       ) : (
         <>
           <PostList posts={posts} setAddVisible={setAddVisible} setEdit={setEdit} deletePost={deletePost} />
