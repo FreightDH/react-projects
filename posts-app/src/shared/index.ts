@@ -1,9 +1,9 @@
 import PostService from './api/PostService';
 
+import CustomButton from './components/CustomButton/CustomButton';
+import CustomInput from './components/CustomInput/CustomInput';
 import CustomLink from './components/CustomLink/CustomLink';
 import Dropdown from './components/Dropdown/Dropdown';
-import FormButton from './components/FormButton/FormButton';
-import FormInput from './components/FormInput/FormInput';
 import LoaderCircle from './components/Loaders/LoaderCircle';
 import LoaderDots from './components/Loaders/LoaderDots';
 
@@ -15,10 +15,10 @@ import useParamsObject from './hooks/useParamsObject';
 
 export {
   PostService,
+  CustomButton,
+  CustomInput,
   CustomLink,
   Dropdown,
-  FormButton,
-  FormInput,
   LoaderCircle,
   LoaderDots,
   getArrayFromRange,

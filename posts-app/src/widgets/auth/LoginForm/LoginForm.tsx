@@ -2,7 +2,7 @@ import { ChangeEvent, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { FormButton, FormInput } from 'shared';
+import { CustomButton, CustomInput } from 'shared';
 import cl from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -33,7 +33,7 @@ const LoginForm: FC<LoginFormProps> = ({
 
   return (
     <form action="#" onSubmit={handleSubmit(onSubmit)} className={cl.form}>
-      <FormInput
+      <CustomInput
         label="E-mail"
         type="email"
         name="emailLogin"
@@ -46,7 +46,7 @@ const LoginForm: FC<LoginFormProps> = ({
         }}
         required
       />
-      <FormInput
+      <CustomInput
         label="Password"
         type="password"
         name="passwordLogin"
@@ -63,7 +63,7 @@ const LoginForm: FC<LoginFormProps> = ({
         }}
         required
       />
-      <FormButton disabled={!isValid}>Login</FormButton>
+      <CustomButton disabled={!isValid}>Login</CustomButton>
     </form>
   );
 };

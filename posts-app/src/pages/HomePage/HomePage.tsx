@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
+import { CustomButton } from 'shared';
 import cl from './HomePage.module.scss';
-import { FormButton } from 'shared';
 
 const HomePage = (): ReactElement => {
   return (
@@ -10,10 +10,10 @@ const HomePage = (): ReactElement => {
       <h2 className={cl.home__subtitle}>from {`{JSON}`} Placeholder</h2>
       <div className={cl.home__buttons}>
         <Link to="/login">
-          <FormButton>Login</FormButton>
+          <CustomButton>Login</CustomButton>
         </Link>
         <Link to="/register">
-          <FormButton>Register</FormButton>
+          <CustomButton>Register</CustomButton>
         </Link>
       </div>
     </div>

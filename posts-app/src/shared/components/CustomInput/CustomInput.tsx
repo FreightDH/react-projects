@@ -1,8 +1,8 @@
 import { ComponentPropsWithRef, FC, ReactElement } from 'react';
 import { UseFormRegister, FieldValues, FieldErrors, RegisterOptions } from 'react-hook-form';
-import cl from './FormInput.module.scss';
+import cl from './CustomInput.module.scss';
 
-interface InputProps extends ComponentPropsWithRef<'input'> {
+interface CustomInputProps extends ComponentPropsWithRef<'input'> {
   label: string;
   name: string;
   register: UseFormRegister<FieldValues>;
@@ -10,7 +10,7 @@ interface InputProps extends ComponentPropsWithRef<'input'> {
   validationSchema: RegisterOptions<FieldValues, string> | undefined;
 }
 
-const Input: FC<InputProps> = ({
+const CustomInput: FC<CustomInputProps> = ({
   label,
   type,
   name,
@@ -45,4 +45,4 @@ const Input: FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default CustomInput;

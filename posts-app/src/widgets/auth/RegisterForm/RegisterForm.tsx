@@ -2,7 +2,7 @@ import { ChangeEvent, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { FormButton, FormInput, isEmpty } from 'shared';
+import { CustomButton, CustomInput, isEmpty } from 'shared';
 import cl from './RegisterForm.module.scss';
 
 interface RegisterFormProps {
@@ -41,7 +41,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
 
   return (
     <form action="#" onSubmit={handleSubmit(onSubmit)} className={cl.form}>
-      <FormInput
+      <CustomInput
         label="First name"
         name="firstName"
         value={firstName}
@@ -58,7 +58,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         }}
         required
       />
-      <FormInput
+      <CustomInput
         label="Last name"
         name="lastName"
         value={lastName}
@@ -75,7 +75,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         }}
         required
       />
-      <FormInput
+      <CustomInput
         label="E-mail"
         type="email"
         name="emailLogin"
@@ -88,7 +88,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         }}
         required
       />
-      <FormInput
+      <CustomInput
         label="Password"
         type="password"
         name="passwordLogin"
@@ -105,7 +105,7 @@ const RegisterForm: FC<RegisterFormProps> = ({
         }}
         required
       />
-      <FormButton disabled={!isValid}>Sign up</FormButton>
+      <CustomButton disabled={!isValid}>Sign up</CustomButton>
     </form>
   );
 };
