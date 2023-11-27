@@ -9,3 +9,11 @@ type Post = {
   title: string;
   body: string;
 };
+
+type Commentary = {
+  postId: number;
+  id: number;
+  name: string;
+  email: string;
+  body: string;
+};
