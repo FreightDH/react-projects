@@ -1,0 +1,23 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 600;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__body {
+    font-size: 18px;
+    line-height: 150%;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
