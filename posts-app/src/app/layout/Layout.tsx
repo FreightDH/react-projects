@@ -9,7 +9,11 @@ const Layout = (): ReactElement => {
     <>
       <Header />
       <main className={cl.page}>
-        <Outlet />
+        <div className="page__container">
+          <div className={cl.page__body}>
+            <Outlet />
+          </div>
+        </div>
       </main>
       <Footer />
     </>

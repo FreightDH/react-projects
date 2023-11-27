@@ -5,8 +5,6 @@ import { Pagination } from 'features';
 import { PostForm, PostList } from 'widgets';
 import { Loader, PostService, usePagination } from 'shared';
 
-import cl from './Home.module.scss';
-
 const Home = (): ReactElement => {
   const [searchParams] = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
@@ -63,36 +61,27 @@ const Home = (): ReactElement => {
 
   return (
     <>
-      <div className="page__container">
-        <div className={cl.page__body}>
-          {isPostsLoading || !posts ? (
-            <Loader />
-          ) : (
-            <>
-              <PostList
-                posts={posts}
-                setAddVisible={setAddVisible}
-                setEdit={setEdit}
-                deletePost={deletePost}
-              />
-              <Pagination
-                totalItems={totalPosts}
-                postsPerPage={postsPerPage}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-              />
-            </>
-          )}
+      {isPostsLoading || !posts ? (
+        <Loader />
+      ) : (
+        <>
+          <PostList posts={posts} setAddVisible={setAddVisible} setEdit={setEdit} deletePost={deletePost} />
+          <Pagination
+            totalItems={totalPosts}
+            postsPerPage={postsPerPage}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </>
+      )}
 
-          {editVisible ? (
-            <PostForm mode="edit" post={postToEdit!} setVisible={setEditVisible} editPost={editPost} />
-          ) : (
-            <></>
-          )}
+      {editVisible ? (
+        <PostForm mode="edit" post={postToEdit!} setVisible={setEditVisible} editPost={editPost} />
+      ) : (
+        <></>
+      )}
 
-          {addVisible ? <PostForm mode="add" setVisible={setAddVisible} addPost={addPost} /> : <></>}
-        </div>
-      </div>
+      {addVisible ? <PostForm mode="add" setVisible={setAddVisible} addPost={addPost} /> : <></>}
     </>
   );
 };
