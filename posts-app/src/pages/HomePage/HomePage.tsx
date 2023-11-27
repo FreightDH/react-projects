@@ -1,33 +1,26 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 
 import { Pagination } from 'features';
 import { PostForm, PostList } from 'widgets';
-import { LoaderCircle, PostService, usePagination } from 'shared';
+import { LoaderCircle, PostService, useCurrentPage, usePagination } from 'shared';
 
 const HomePage = (): ReactElement => {
-  const [searchParams] = useSearchParams();
   const [posts, setPosts] = useState<Post[]>([]);
-  const [totalPosts, setTotalPosts] = useState(0);
-  const [currentPage, setCurrentPage] = useState(() => {
-    const page = searchParams.get('page');
-    if (!page) return 1;
-    return +page;
-  });
+  const [currentPage, setCurrentPage] = useCurrentPage();
   const [postsPerPage] = useState(10);
-  const [data, totalItems, isPostsLoading] = usePagination(currentPage, postsPerPage);
+  const [data, totalItems, setTotalItems, isPostsLoading] = usePagination(currentPage, postsPerPage);
 
   const [editVisible, setEditVisible] = useState(false);
   const [addVisible, setAddVisible] = useState(false);
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
 
   const addPost = async (title: string, body: string) => {
-    const id = totalPosts + 1;
+    const id = +totalItems + 1;
     const userId = 19042003;
 
     await PostService.add(userId, id, title, body);
     setPosts([...posts, { userId, id, title, body }]);
-    setTotalPosts(id);
+    setTotalItems(id);
   };
 
   const setEdit = (post: Post) => {
@@ -56,8 +49,7 @@ const HomePage = (): ReactElement => {
 
   useEffect(() => {
     setPosts(data);
-    setTotalPosts(+totalItems);
-  }, [data, totalItems]);
+  }, [data]);
 
   return (
     <>
@@ -67,7 +59,7 @@ const HomePage = (): ReactElement => {
         <>
           <PostList posts={posts} setAddVisible={setAddVisible} setEdit={setEdit} deletePost={deletePost} />
           <Pagination
-            totalItems={totalPosts}
+            totalItems={totalItems}
             postsPerPage={postsPerPage}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
