@@ -12,6 +12,7 @@ import { getArrayFromRange, getSearchPath, getTotalPages, isEmpty } from './func
 import useCurrentPage from './hooks/useCurrentPage';
 import useFetching from './hooks/useFetching';
 import useParamsObject from './hooks/useParamsObject';
+import useScrollBlock from './hooks/useScrollBlock';
 
 export {
   PostService,
@@ -28,4 +29,5 @@ export {
   useCurrentPage,
   useFetching,
   useParamsObject,
+  useScrollBlock,
 };

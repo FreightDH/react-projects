@@ -1,5 +1,6 @@
-import { ChangeEvent, FC, MouseEvent, ReactElement, useState } from 'react';
+import { ChangeEvent, FC, MouseEvent, ReactElement, useEffect, useState } from 'react';
 import cl from './PostForm.module.scss';
+import { useScrollBlock } from 'shared/index';
 
 interface PostFormProps {
   mode: 'add' | 'edit';
@@ -10,6 +11,7 @@ interface PostFormProps {
 }
 
 const PostForm: FC<PostFormProps> = ({ mode, post, setVisible, addPost, editPost }): ReactElement => {
+  const [blockScroll, allowScroll] = useScrollBlock();
   const [newTitle, setNewTitle] = useState(post?.title || '');
   const [newBody, setNewBody] = useState(post?.body || '');
 
@@ -23,6 +25,7 @@ const PostForm: FC<PostFormProps> = ({ mode, post, setVisible, addPost, editPost
 
   const handleClose = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    allowScroll();
     setVisible(false);
   };
 
@@ -39,8 +42,13 @@ const PostForm: FC<PostFormProps> = ({ mode, post, setVisible, addPost, editPost
         break;
     }
 
+    allowScroll();
     setVisible(false);
   };
+
+  useEffect(() => {
+    blockScroll();
+  }, []);
 
   return (
     <div className={cl.popup}>
