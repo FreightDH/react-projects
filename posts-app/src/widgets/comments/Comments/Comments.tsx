@@ -6,9 +6,19 @@ import cl from './Comments.module.scss';
 interface CommentsProps {
   comments: Commentary[] | null;
   isLoading: boolean;
+  error: string;
 }
 
-const Comments: FC<CommentsProps> = ({ comments, isLoading }): ReactElement => {
+const Comments: FC<CommentsProps> = ({ comments, isLoading, error }): ReactElement => {
+  if (error) {
+    return (
+      <div className={cl.comments}>
+        <h2 className={cl.comments__title}>Comments:</h2>
+        <p className="comments__error">An error occurred while uploading comments! Try again later.</p>
+      </div>
+    );
+  }
+
   if (isLoading || !comments) {
     return (
       <div className={cl.comments}>
