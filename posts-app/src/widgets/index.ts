@@ -4,8 +4,8 @@ import CommentsItem from './comments/CommentsItem/CommentsItem';
 import Footer from './layout/Footer/Footer';
 import Header from './layout/Header/Header';
 
-import LoginForm from './auth/LoginForm/LoginForm';
-import RegisterForm from './auth/RegisterForm/RegisterForm';
+import LoginForm from './authorization/LoginForm/LoginForm';
+import RegisterForm from './authorization/RegisterForm/RegisterForm';
 
 import Post from './posts/Post/Post';
 import PostForm from './posts/PostForm/PostForm';

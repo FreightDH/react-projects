@@ -1,9 +1,12 @@
+@import 'styles';
+
 .popup {
   position: fixed;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 10;
 
   background-color: rgba(0, 0, 0, 0.7);
 
@@ -17,7 +20,10 @@
 
   &__content {
     min-width: 450px;
+    @include adaptiveValue('min-width', 450, 290);
     padding: 25px 0;
+    @include adaptiveValue('padding-top', 25, 20);
+    @include adaptiveValue('padding-bottom', 25, 20);
     background-color: #fff;
     border-radius: 5px;
     position: relative;
@@ -26,6 +32,7 @@
   &__title {
     padding: 0 15px;
     font-size: 24px;
+    @include adaptiveValue('font-size', 24, 20);
     font-weight: 600;
   }
 
@@ -46,6 +53,8 @@
 
   &__divider {
     margin: 15px 0 20px 0;
+    @include adaptiveValue('margin-top', 15, 10);
+    @include adaptiveValue('margin-bottom', 20, 15);
     width: 100%;
     height: 1px;
     background-color: #dee2e6;
@@ -56,6 +65,7 @@
     display: flex;
     flex-direction: column;
     gap: 25px;
+    @include adaptiveValue('gap', 25, 15);
   }
 }
 
@@ -98,6 +108,8 @@
     border-radius: 5px;
     background-color: rgba(#0466c8, 0.8);
     transition: all 0.2s ease 0s;
+
+    @include adaptiveValue('font-size', 16, 14);
 
     &.close {
       background-color: #d90429;

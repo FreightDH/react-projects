@@ -105,13 +105,6 @@ body {
   flex-direction: column;
   > main {
     flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 //</ОБОЛОЧКА>
-
-//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>
-@import 'common';
-//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>

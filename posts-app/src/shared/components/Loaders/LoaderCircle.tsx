@@ -2,6 +2,7 @@ import { CSSProperties, ReactElement } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 
 const styles: CSSProperties = {
+  flex: '1 1 auto',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',

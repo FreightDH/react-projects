@@ -16,13 +16,14 @@ class PostService {
     return res;
   };
 
-  static add = async (userId: number, id: number, title: string, body: string) => {
-    await axios.post('https://jsonplaceholder.typicode.com/posts', {
+  static add = async (userId: number, title: string, body: string) => {
+    const res = await axios.post('https://jsonplaceholder.typicode.com/posts', {
       userId,
-      id,
       title,
       body,
     });
+
+    return res.data;
   };
 
   static edit = async (id: number, title: string, body: string) => {

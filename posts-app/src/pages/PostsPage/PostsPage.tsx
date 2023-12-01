@@ -1,10 +1,14 @@
 import { ReactElement, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import { Pagination } from 'features';
 import { PostForm, PostList } from 'widgets';
 import { LoaderCircle, PostService, useCurrentPage, useFetching } from 'shared';
 
+import cl from './PostsPage.module.scss';
+
 const PostsPage = (): ReactElement => {
+  const params = useParams();
   const [posts, setPosts] = useState<Post[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useCurrentPage();
@@ -20,12 +24,11 @@ const PostsPage = (): ReactElement => {
   const [postToEdit, setPostToEdit] = useState<Post | null>(null);
 
   const addPost = async (title: string, body: string) => {
-    const id = +totalItems + 1;
     const userId = 19042003;
+    const newPost = await PostService.add(userId, title, body);
 
-    await PostService.add(userId, id, title, body);
-    setPosts([...posts, { userId, id, title, body }]);
-    setTotalItems(id);
+    setPosts([...posts, newPost]);
+    setTotalItems(newPost.id);
   };
 
   const setEdit = (post: Post) => {
@@ -54,22 +57,31 @@ const PostsPage = (): ReactElement => {
 
   useEffect(() => {
     fetchPosts(currentPage, postsPerPage);
-  }, [currentPage, postsPerPage]);
+  }, [currentPage, postsPerPage, params]);
 
   return (
     <>
       {isPostsLoading || !posts ? (
         <LoaderCircle />
       ) : (
-        <>
-          <PostList posts={posts} setAddVisible={setAddVisible} setEdit={setEdit} deletePost={deletePost} />
-          <Pagination
-            totalItems={totalItems}
-            currentPage={currentPage}
-            itemsPerPage={postsPerPage}
-            setCurrentPage={setCurrentPage}
-          />
-        </>
+        <main className={cl.page}>
+          <div className="page__container">
+            <div className={cl.page__body}>
+              <PostList
+                posts={posts}
+                setAddVisible={setAddVisible}
+                setEdit={setEdit}
+                deletePost={deletePost}
+              />
+              <Pagination
+                totalItems={totalItems}
+                currentPage={currentPage}
+                itemsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+              />
+            </div>
+          </div>
+        </main>
       )}
 
       {editVisible ? (
