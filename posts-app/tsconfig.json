@@ -29,10 +29,10 @@
     "paths": {
       "app/*": ["app/*"],
       "pages/*": ["pages/*"],
-      "shared/*": ["shared/*"],
       "widgets/*": ["widgets/*"],
       "features/*": ["features/*"],
-      "assets/*": ["assets/*"],
+      "entities/*": ["entities/*"],
+      "shared/*": ["shared/*"],
       "styles/*": ["styles/*"]
     }
   },

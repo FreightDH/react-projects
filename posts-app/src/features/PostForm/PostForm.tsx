@@ -1,13 +1,13 @@
 import { ChangeEvent, FC, MouseEvent, ReactElement, useEffect, useState } from 'react';
+import { useScrollBlock } from 'shared';
 import cl from './PostForm.module.scss';
-import { useScrollBlock } from 'shared/index';
 
 interface PostFormProps {
   mode: 'add' | 'edit';
-  post?: Post;
+  post?: PostData;
   setVisible: (isVisible: boolean) => void;
   addPost?: (title: string, body: string) => void;
-  editPost?: (editedPost: Post) => void;
+  editPost?: (editedPost: PostData) => void;
 }
 
 const PostForm: FC<PostFormProps> = ({ mode, post, setVisible, addPost, editPost }): ReactElement => {

@@ -1,14 +1,14 @@
 import { FC, ReactElement } from 'react';
 import { LoaderCircle } from 'shared';
-import cl from './Post.module.scss';
+import cl from './PostDetails.module.scss';
 
-interface PostProps {
-  post: Post | null;
+interface PostDetailsProps {
+  post: PostData | null;
   isLoading: boolean;
   error: string;
 }
 
-const Post: FC<PostProps> = ({ post, isLoading, error }): ReactElement => {
+const PostDetails: FC<PostDetailsProps> = ({ post, isLoading, error }): ReactElement => {
   if (error) {
     return (
       <div className={cl.post}>
@@ -29,4 +29,4 @@ const Post: FC<PostProps> = ({ post, isLoading, error }): ReactElement => {
   );
 };
 
-export default Post;
+export default PostDetails;

@@ -9,10 +9,10 @@ export default defineConfig({
     alias: {
       app: '/src/app',
       pages: '/src/pages',
-      shared: '/src/shared',
       widgets: '/src/widgets',
       features: '/src/features',
-      assets: '/src/assets',
+      entities: '/src/entities',
+      shared: '/src/shared',
       styles: '/src/styles',
     },
   },

@@ -1,11 +1,13 @@
 import { FC, ReactElement } from 'react';
-import { edit, remove } from 'assets';
-import cl from './PostItem.module.scss';
 import { useNavigate } from 'react-router-dom';
 
+import editIcon from '../../assets/edit.svg';
+import deleteIcon from '../../assets/delete.svg';
+import cl from './PostItem.module.scss';
+
 interface PostItemProps {
-  post: Post;
-  setEdit: (post: Post) => void;
+  post: PostData;
+  setEdit: (post: PostData) => void;
   deletePost: (postId: number) => void;
 }
 
@@ -21,10 +23,10 @@ const PostItem: FC<PostItemProps> = ({ post, setEdit, deletePost }): ReactElemen
       <p className={cl.post__body}>{postBody}</p>
       <div className={cl.post__buttons} onClick={(event) => event.stopPropagation()}>
         <button className={cl.post__button} onClick={() => setEdit(post)}>
-          <img src={edit} alt="edit-icon" />
+          <img src={editIcon} alt="edit-icon" />
         </button>
         <button className={cl.post__button} onClick={() => deletePost(post.id)}>
-          <img src={remove} alt="delete-icon" />
+          <img src={deleteIcon} alt="delete-icon" />
         </button>
       </div>
     </li>

@@ -1,21 +1,22 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Comments, Post } from 'widgets';
+import { PostDetails } from 'entities/Post';
+import { Comments } from 'widgets';
 import { Pagination } from 'features';
 import { PostService, useCurrentPage, useFetching } from 'shared';
 
-import cl from './PostPage.module.scss';
+import cl from './PostDetailsPage.module.scss';
 
-const PostPage = (): ReactElement => {
+const PostDetailsPage = (): ReactElement => {
   const params = useParams();
-  const [post, setPost] = useState<Post | null>(null);
+  const [post, setPost] = useState<PostData | null>(null);
   const [fetchPostById, isPostLoading, postError] = useFetching(async (id: number) => {
     const res = await PostService.getById(id);
     setPost(res.data);
   });
 
-  const [comments, setComments] = useState<Commentary[]>([]);
+  const [comments, setComments] = useState<CommentData[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useCurrentPage();
   const [commentsPerPage] = useState(1);
@@ -39,7 +40,7 @@ const PostPage = (): ReactElement => {
     <main className={cl.page}>
       <div className="page__container">
         <div className={cl.page__body}>
-          <Post post={post} isLoading={isPostLoading} error={postError} />
+          <PostDetails post={post} isLoading={isPostLoading} error={postError} />
           <Comments comments={comments} isLoading={isCommentsLoading} error={commentsError} />
           <Pagination
             totalItems={totalItems}
@@ -54,4 +55,4 @@ const PostPage = (): ReactElement => {
   );
 };
 
-export default PostPage;
+export default PostDetailsPage;

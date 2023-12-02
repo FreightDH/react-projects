@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
-import { logo } from 'assets';
 import { Menu, ProfileIcon } from 'features';
+import logo from './assets/logo.png';
 import cl from './Header.module.scss';
 
 const Header = (): ReactElement => {

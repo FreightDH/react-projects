@@ -1,18 +1,18 @@
 import { FC, ReactElement } from 'react';
-import { profileComment } from 'assets';
-import cl from './CommentsItem.module.scss';
+import profile from '../assets/profile.svg';
+import cl from './Comment.module.scss';
 
-interface CommentsItemProps {
-  comment: Commentary;
+interface CommentProps {
+  comment: CommentData;
   index: number;
 }
 
-const CommentsItem: FC<CommentsItemProps> = ({ comment }): ReactElement => {
+const Comment: FC<CommentProps> = ({ comment }): ReactElement => {
   return (
     <li className={cl.comment}>
       <div className={cl.comment__author}>
         <div className={cl.author__icon}>
-          <img src={profileComment} alt="profile-icon" />
+          <img src={profile} alt="profile-icon" />
         </div>
         <div className={cl.author__data}>
           <div className={cl.author__name}>{comment.name}</div>
@@ -24,4 +24,4 @@ const CommentsItem: FC<CommentsItemProps> = ({ comment }): ReactElement => {
   );
 };
 
-export default CommentsItem;
+export default Comment;

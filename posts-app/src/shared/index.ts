@@ -8,12 +8,12 @@ import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import LoaderCircle from './components/Loaders/LoaderCircle';
 import LoaderDots from './components/Loaders/LoaderDots';
 
-import { getArrayFromRange, getSearchPath, getTotalPages, isEmpty } from './functions';
+import { getArrayFromRange, getSearchPath, getTotalPages, isEmpty } from './lib/helpers';
 
-import useCurrentPage from './hooks/useCurrentPage';
-import useFetching from './hooks/useFetching';
-import useParamsObject from './hooks/useParamsObject';
-import useScrollBlock from './hooks/useScrollBlock';
+import useCurrentPage from './lib/hooks/useCurrentPage';
+import useFetching from './lib/hooks/useFetching';
+import useParamsObject from './lib/hooks/useParamsObject';
+import useScrollBlock from './lib/hooks/useScrollBlock';
 
 export {
   PostService,

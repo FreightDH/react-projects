@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 import { Dropdown } from 'shared';
-import { profile } from 'assets';
+import profile from './assets/profile.svg';
 import cl from './ProfileIcon.module.scss';
 
 const ProfileIcon = (): ReactElement => {

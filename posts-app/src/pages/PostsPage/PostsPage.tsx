@@ -1,15 +1,15 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Pagination } from 'features';
-import { PostForm, PostList } from 'widgets';
+import { PostList } from 'widgets';
+import { Pagination, PostForm } from 'features';
 import { LoaderCircle, PostService, useCurrentPage, useFetching } from 'shared';
 
 import cl from './PostsPage.module.scss';
 
 const PostsPage = (): ReactElement => {
   const params = useParams();
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostData[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useCurrentPage();
   const [postsPerPage] = useState(10);
@@ -21,7 +21,7 @@ const PostsPage = (): ReactElement => {
 
   const [editVisible, setEditVisible] = useState(false);
   const [addVisible, setAddVisible] = useState(false);
-  const [postToEdit, setPostToEdit] = useState<Post | null>(null);
+  const [postToEdit, setPostToEdit] = useState<PostData | null>(null);
 
   const addPost = async (title: string, body: string) => {
     const userId = 19042003;
@@ -31,12 +31,12 @@ const PostsPage = (): ReactElement => {
     setTotalItems(newPost.id);
   };
 
-  const setEdit = (post: Post) => {
+  const setEdit = (post: PostData) => {
     setPostToEdit(post);
     setEditVisible(true);
   };
 
-  const editPost = async (editedPost: Post) => {
+  const editPost = async (editedPost: PostData) => {
     await PostService.edit(editedPost.id, editedPost.title, editedPost.body);
     setPosts(
       posts &&

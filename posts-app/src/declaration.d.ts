@@ -3,14 +3,14 @@ declare module '*.module.scss' {
   export default styles;
 }
 
-type Post = {
+type PostData = {
   userId: number;
   id: number;
   title: string;
   body: string;
 };
 
-type Commentary = {
+type CommentData = {
   postId: number;
   id: number;
   name: string;
