@@ -2,6 +2,7 @@ import { ChangeEvent, FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
+import { useAuth } from 'features';
 import { CustomButton, CustomInput, isEmpty } from 'shared';
 import cl from './RegisterForm.module.scss';
 
@@ -33,9 +34,10 @@ const RegisterForm: FC<RegisterFormProps> = ({
     reset,
   } = useForm({ mode: 'onBlur' });
   const navigate = useNavigate();
+  const { signUp } = useAuth();
 
   const onSubmit = () => {
-    navigate('/posts');
+    signUp({ firstName, lastName, email, password }, () => navigate('/posts'));
     reset();
   };
 

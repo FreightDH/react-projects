@@ -1,5 +1,6 @@
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Layout from './layout/Layout';
+import { RequireAuth } from 'features';
 import { HomePage, LoginPage, PostDetailsPage, PostsPage, RegisterPage } from '../pages';
 
 const router = createBrowserRouter(
@@ -7,7 +8,14 @@ const router = createBrowserRouter(
     <Route>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="posts" element={<PostsPage />} />
+        <Route
+          path="posts"
+          element={
+            <RequireAuth>
+              <PostsPage />
+            </RequireAuth>
+          }
+        />
         <Route path="posts/:id" element={<PostDetailsPage />} />
       </Route>
       <Route>
