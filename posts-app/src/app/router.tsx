@@ -16,7 +16,14 @@ const router = createBrowserRouter(
             </RequireAuth>
           }
         />
-        <Route path="posts/:id" element={<PostDetailsPage />} />
+        <Route
+          path="posts/:id"
+          element={
+            <RequireAuth>
+              <PostDetailsPage />
+            </RequireAuth>
+          }
+        />
       </Route>
       <Route>
         <Route path="login" element={<LoginPage />} />
