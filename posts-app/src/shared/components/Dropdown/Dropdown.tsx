@@ -1,14 +1,30 @@
 import { FC, ReactElement } from 'react';
-import cl from './Dropdown.module.scss';
 import { Link } from 'react-router-dom';
+import { useAuth } from 'features';
+import cl from './Dropdown.module.scss';
 
 interface DropdownProps {
   isOpen: boolean;
 }
 
 const Dropdown: FC<DropdownProps> = ({ isOpen }): ReactElement => {
+  const { user, logout } = useAuth();
   const dropdownClasses = [cl.dropdown];
   if (isOpen) dropdownClasses.push(cl.open);
+
+  if (user) {
+    return (
+      <div className={dropdownClasses.join(' ')}>
+        <div className={cl.dropdown__title}>Profile</div>
+        <Link to="/profile" className={cl.dropdown__option}>
+          Profile
+        </Link>
+        <Link to="/" replace className={cl.dropdown__option} onClick={logout}>
+          Logout
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className={dropdownClasses.join(' ')}>

@@ -4,7 +4,7 @@ interface AuthContextProps {
   user: User | null;
   signIn: (userInfo: User, callback: () => void) => void;
   signUp: (userInfo: User, callback: () => void) => void;
-  logout: (callback: () => void) => void;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextProps>({

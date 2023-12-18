@@ -19,9 +19,8 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement => {
     callback();
   };
 
-  const logout = (callback: () => void) => {
+  const logout = () => {
     setUser(null);
-    callback();
   };
 
   const value = useMemo(() => ({ user, signIn, signUp, logout }), [user, signIn, signUp, logout]);

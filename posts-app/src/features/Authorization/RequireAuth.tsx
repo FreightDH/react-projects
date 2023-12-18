@@ -11,7 +11,7 @@ const RequireAuth: FC<RequireAuthProps> = ({ children }): ReactElement => {
   const { user } = useAuth();
 
   if (!user) {
-    return <Navigate to="/" state={{ from: location }} />;
+    return <Navigate to="/login" state={{ from: location }} />;
   }
 
   return <>{children}</>;
