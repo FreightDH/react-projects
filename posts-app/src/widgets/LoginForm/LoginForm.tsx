@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { CustomButton, CustomInput } from 'shared';
+import { useAuth } from 'features';
 import cl from './LoginForm.module.scss';
 
 interface LoginFormProps {
@@ -25,9 +26,10 @@ const LoginForm: FC<LoginFormProps> = ({
     reset,
   } = useForm({ mode: 'onBlur' });
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
   const onSubmit = () => {
-    navigate('/posts');
+    signIn({ email, password }, () => navigate('/posts'));
     reset();
   };
 

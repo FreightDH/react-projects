@@ -9,6 +9,20 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement => {
   const [user, setUser] = useState<User | null>(null);
 
   const signIn = (userInfo: User, callback: () => void) => {
+    const user = localStorage.getItem(userInfo.email);
+
+    if (!user) {
+      alert("This user doesn't exists!");
+      return;
+    }
+
+    const userPassword = JSON.parse(user).password;
+
+    if (userInfo.password !== userPassword) {
+      alert('Password is incorrect!');
+      return;
+    }
+
     setUser(userInfo);
     callback();
   };
