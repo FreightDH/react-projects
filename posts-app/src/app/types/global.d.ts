@@ -17,3 +17,10 @@ type CommentData = {
   email: string;
   body: string;
 };
+
+type User = {
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  password: string;
+};
