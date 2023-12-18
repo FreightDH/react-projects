@@ -24,17 +24,20 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }): ReactElement => {
     }
 
     setUser(userInfo);
+    localStorage.setItem('isAuth', 'true');
     callback();
   };
 
   const signUp = (userInfo: User, callback: () => void) => {
     setUser(userInfo);
+    localStorage.setItem('isAuth', 'true');
     localStorage.setItem(userInfo.email, JSON.stringify(userInfo));
     callback();
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem('isAuth');
   };
 
   const value = useMemo(() => ({ user, signIn, signUp, logout }), [user, signIn, signUp, logout]);

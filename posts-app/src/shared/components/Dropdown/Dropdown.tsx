@@ -8,11 +8,11 @@ interface DropdownProps {
 }
 
 const Dropdown: FC<DropdownProps> = ({ isOpen }): ReactElement => {
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
   const dropdownClasses = [cl.dropdown];
   if (isOpen) dropdownClasses.push(cl.open);
 
-  if (user) {
+  if (localStorage.getItem('isAuth')) {
     return (
       <div className={dropdownClasses.join(' ')}>
         <div className={cl.dropdown__title}>Profile</div>
