@@ -10,4 +10,4 @@
 - [`FSD Architecture`](https://feature-sliced.design/ru/)
 - [`Vite`](https://vitejs.dev)
 
-### Deploy: [link](https://freightdh.github.io/RadarFrontend/posts-app/)
+### Deploy: [link](https://freightdh-posts-app.netlify.app/)
