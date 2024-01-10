@@ -3,8 +3,16 @@
 - [TODO App](#todo)
 - [Posts App](#posts)
 
+## TODO App<a name='todo'></a>
 
-## Posts App <a name='posts'></a>
+### Tech stack:
+- [`React`](https://ru.legacy.reactjs.org/)
+- [`TypeScript`](https://www.typescriptlang.org)
+- [`CSS Modules`](https://github.com/css-modules/css-modules)
+
+### Deploy: [link](https://freightdh.github.io/RadarFrontend/todo-app/)
+
+## Posts App<a name='posts'></a>
 
 ### Tech stack:
 
