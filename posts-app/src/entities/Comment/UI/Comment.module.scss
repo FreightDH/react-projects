@@ -1,0 +1,47 @@
+@import 'styles';
+
+.comment {
+  padding: 0px 0px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid #ced4da;
+
+  font-size: 15px;
+  @include adaptiveValue('font-size', 15, 13);
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__text {
+    line-height: 150%;
+  }
+}
+
+.author {
+  &__icon {
+    img {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+    }
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+
+  &__email {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+}

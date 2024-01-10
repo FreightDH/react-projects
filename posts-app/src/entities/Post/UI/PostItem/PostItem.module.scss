@@ -1,0 +1,87 @@
+@import 'styles';
+
+.post {
+  padding: 15px;
+
+  display: flex;
+  align-items: center;
+
+  border-top: 1px solid #ced4da;
+  cursor: pointer;
+
+  @media (max-width: $mobile) {
+    display: block;
+  }
+
+  &:nth-child(even) {
+    background-color: #ededed;
+  }
+
+  &__number {
+    flex: 0 0 5%;
+
+    @media (max-width: $mobile) {
+      display: inline-block;
+      font-weight: 600;
+      @include adaptiveValue('font-size', 16, 13);
+    }
+  }
+
+  &__title {
+    flex: 0 0 30%;
+    padding: 0px 15px 0px 0px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    @media (max-width: $mobile) {
+      display: inline-block;
+      margin: 0px 0px 0px 10px;
+      @include adaptiveValue('margin-left', 10, 5);
+      font-weight: 600;
+      @include adaptiveValue('font-size', 16, 13);
+    }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    padding: 0px 20px 0px 0px;
+    line-height: 125%;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+
+    @media (max-width: $mobile) {
+      padding: 10px 0;
+      @include adaptiveValue('font-size', 16, 13);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 30px;
+
+    @media (max-width: $mobile) {
+      justify-content: flex-end;
+      gap: 15px;
+    }
+  }
+
+  &__button {
+    width: 20px;
+    height: 20px;
+    transition: all 0.2s ease 0s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

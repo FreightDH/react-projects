@@ -1,0 +1,27 @@
+@import 'styles';
+
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &__title {
+    font-size: 32px;
+    @include adaptiveValue('font-size', 32, 20);
+    font-weight: 600;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__body {
+    font-size: 18px;
+    @include adaptiveValue('font-size', 18, 14);
+    line-height: 150%;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+}

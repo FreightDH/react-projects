@@ -1,0 +1,41 @@
+@import 'styles';
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__body {
+    width: 400px;
+    @include adaptiveValue('width', 400, 290);
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    @include adaptiveValue('gap', 30, 20);
+
+    background-color: #fff;
+    box-shadow: 0px 2px 10px 2px rgba(34, 60, 80, 0.2);
+    border-radius: 10px;
+  }
+
+  &__title {
+    font-size: 40px;
+    @include adaptiveValue('font-size', 40, 26);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+  }
+
+  &__text {
+    font-size: 14px;
+    @include adaptiveValue('font-size', 14, 12);
+
+    > * {
+      font-weight: 600;
+      text-decoration: underline !important;
+    }
+  }
+}
