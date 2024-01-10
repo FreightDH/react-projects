@@ -1,4 +1,4 @@
-# Posts App
+## Posts App
 
 ### Tech stack:
 
