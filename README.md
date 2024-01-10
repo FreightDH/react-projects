@@ -1,4 +1,4 @@
-# TODO App
+## TODO App
 
 ### Tech stack:
 - [`React`](https://ru.legacy.reactjs.org/)
