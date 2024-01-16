@@ -19,7 +19,7 @@ const AddSection = (): ReactElement => {
   };
 
   const onAddButtonClick = () => {
-    if (task.name) {
+    if (task.name.trim()) {
       addTask({ name: task.name, description: task.description });
       setTask(DEFAULT_TASK);
     } else {
