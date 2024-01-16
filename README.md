@@ -1,9 +1,4 @@
-## Radar Frontend
-
-- [TODO App](#todo)
-- [Posts App](#posts)
-
-## TODO App<a name='todo'></a>
+## TODO App
 
 ### Tech stack:
 - [`React`](https://ru.legacy.reactjs.org/)
@@ -12,7 +7,9 @@
 
 ### Deploy: [link](https://freightdh.github.io/RadarFrontend/todo-app/)
 
-## Posts App<a name='posts'></a>
+![image](https://github.com/FreightDH/RadarFrontend/assets/81368535/c139d63e-a958-4ddf-a2a1-b5256a6698f6)
+
+## Posts App
 
 ### Tech stack:
 
@@ -25,3 +22,5 @@
 - [`Vite`](https://vitejs.dev)
 
 ### Deploy: [link](https://freightdh-posts-app.netlify.app/)
+
+![image](https://github.com/FreightDH/RadarFrontend/assets/81368535/e8f0073d-f5d3-47c4-ab9e-d986d951a03d)
