@@ -1,4 +1,4 @@
-## TODO App
+## Project "TODO App"
 
 ### Tech stack:
 - [`React`](https://ru.legacy.reactjs.org/)
@@ -9,7 +9,8 @@
 
 ![image](https://github.com/FreightDH/RadarFrontend/assets/81368535/c139d63e-a958-4ddf-a2a1-b5256a6698f6)
 
-## Posts App
+
+## Project "Posts App"
 
 ### Tech stack:
 
