@@ -5,7 +5,7 @@
 - [`TypeScript`](https://www.typescriptlang.org)
 - [`CSS Modules`](https://github.com/css-modules/css-modules)
 
-### Deploy: [link](https://freightdh.github.io/RadarFrontend/todo-app/)
+### Deploy: [link](https://freightdh.github.io/react-projects/todo-app/)
 
 ![image](https://github.com/FreightDH/RadarFrontend/assets/81368535/c139d63e-a958-4ddf-a2a1-b5256a6698f6)
 
