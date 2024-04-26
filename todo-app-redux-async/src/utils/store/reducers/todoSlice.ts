@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 interface StateType {
   tasks: Task[];
@@ -32,15 +33,117 @@ export const fetchTasks = createAsyncThunk('todo/fetchTasks', async (_, { reject
   }
 });
 
+export const addNewTask = createAsyncThunk('todo/addNewTask', async (title: string, { rejectWithValue, dispatch }) => {
+  const task = {
+    id: Date.now(),
+    userId: 1,
+    title,
+    completed: false,
+  };
+
+  try {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    });
+
+    if (!response.ok) {
+      throw new Error("Can't add task. Server error.");
+    }
+
+    const data = await response.json();
+
+    dispatch(addTask(data));
+  } catch (error) {
+    if (error instanceof Error) {
+      return rejectWithValue(error.message);
+    }
+  }
+});
+
+export const deleteTask = createAsyncThunk('todo/deleteTask', async (id: number, { rejectWithValue, dispatch }) => {
+  try {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error("Can't delete task. Server error.");
+    }
+
+    dispatch(removeTask({ id }));
+  } catch (error) {
+    if (error instanceof Error) {
+      return rejectWithValue(error.message);
+    }
+  }
+});
+
+export const toggleTask = createAsyncThunk(
+  'todo/toggleTask',
+  async (id: number, { rejectWithValue, dispatch, getState }) => {
+    const state = getState() as RootState;
+    const task = state.tasks.find((task) => task.id === id);
+
+    try {
+      const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          completed: !task?.completed,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Can't delete task. Server error.");
+      }
+
+      dispatch(completeTask({ id }));
+    } catch (error) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      }
+    }
+  },
+);
+
+export const patchTask = createAsyncThunk('todo/patchTask', async (task: Task, { rejectWithValue, dispatch }) => {
+  try {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${task.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: task.title,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Can't delete task. Server error.");
+    }
+
+    dispatch(editTask({ title: task.title }));
+  } catch (error) {
+    if (error instanceof Error) {
+      return rejectWithValue(error.message);
+    }
+  }
+});
+
 export const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
     addTask: (state, action) => {
-      const { title } = action.payload;
-      state.tasks.push({ id: Date.now(), userId: 1, title, completed: false });
+      state.tasks.push(action.payload);
     },
-    deleteTask: (state, action) => {
+    removeTask: (state, action) => {
       state.tasks = state.tasks.filter((task) => task.id !== action.payload.id);
     },
     completeTask: (state, action) => {
@@ -60,20 +163,11 @@ export const todoSlice = createSlice({
         if (task.id === state.taskIdForEdit) {
           state.taskIdForEdit = null;
 
-          return action.payload;
+          return { ...task, title: action.payload.title };
         }
 
         return task;
       });
-    },
-    saveTasks: (state) => {
-      localStorage.setItem('tasks', JSON.stringify(state.tasks));
-    },
-    loadTasks: (state) => {
-      const savedTasks = localStorage.getItem('tasks');
-      if (savedTasks) {
-        state.tasks = JSON.parse(savedTasks);
-      }
     },
   },
   extraReducers: (builder) => {
@@ -85,13 +179,24 @@ export const todoSlice = createSlice({
       state.tasks = action.payload;
       state.isLoading = false;
     });
-    builder.addCase(fetchTasks.rejected, (state, action) => {
+    builder.addCase(fetchTasks.rejected, (state) => {
       state.isLoading = false;
+      state.isError = true;
+    });
+    builder.addCase(addNewTask.rejected, (state) => {
+      state.isError = true;
+    });
+    builder.addCase(deleteTask.rejected, (state) => {
+      state.isError = true;
+    });
+    builder.addCase(toggleTask.rejected, (state) => {
+      state.isError = true;
+    });
+    builder.addCase(patchTask.rejected, (state) => {
       state.isError = true;
     });
   },
 });
 
-export const { addTask, deleteTask, completeTask, setTaskIdForEdit, editTask, saveTasks, loadTasks } =
-  todoSlice.actions;
+export const { addTask, removeTask, completeTask, setTaskIdForEdit, editTask } = todoSlice.actions;
 export const todoReducer = todoSlice.reducer;

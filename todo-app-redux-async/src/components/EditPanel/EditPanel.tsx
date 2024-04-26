@@ -1,7 +1,7 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
-import { useDispatch } from 'react-redux';
 
-import { editTask } from '../../utils/store/reducers/todoSlice';
+import { useAppDispatch } from '../../utils/hooks/reduxHooks';
+import { patchTask } from '../../utils/store/reducers/todoSlice';
 
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -13,8 +13,8 @@ interface EditPanelProps {
 }
 
 const EditPanel: React.FC<EditPanelProps> = ({ task }): ReactElement => {
-  const dispatch = useDispatch();
-  const [newTask, setNewTask] = useState('');
+  const dispatch = useAppDispatch();
+  const [newTask, setNewTask] = useState(task.title);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -22,7 +22,7 @@ const EditPanel: React.FC<EditPanelProps> = ({ task }): ReactElement => {
   };
 
   const handleClick = () => {
-    dispatch(editTask({ ...task, title: newTask }));
+    dispatch(patchTask({ ...task, title: newTask }));
   };
 
   return (

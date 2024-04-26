@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import { useAppSelector } from '../../utils/hooks/useAppSelector';
+import { useAppSelector } from '../../utils/hooks/reduxHooks';
 
 import EditPanel from '../EditPanel/EditPanel';
 import Task from './TaskItem/TaskItem';

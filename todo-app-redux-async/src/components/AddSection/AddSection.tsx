@@ -1,13 +1,15 @@
 import { ChangeEvent, ReactElement, useState } from 'react';
-import styles from './AddSection.module.scss';
-import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
-import { addTask } from '../../utils/store/reducers/todoSlice';
+
+import { useAppDispatch } from '../../utils/hooks/reduxHooks';
+import { addNewTask } from '../../utils/store/reducers/todoSlice';
 
 import Label from '../Label/Label';
+import Button from '../Button/Button';
+
+import styles from './AddSection.module.scss';
 
 const AddSection = (): ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [task, setTask] = useState('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -17,7 +19,7 @@ const AddSection = (): ReactElement => {
 
   const handleClick = () => {
     if (task.trim()) {
-      dispatch(addTask({ title: task }));
+      dispatch(addNewTask(task));
       setTask('');
     } else {
       alert('Enter the task name!');
