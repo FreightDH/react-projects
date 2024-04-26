@@ -2,6 +2,7 @@
 
 ### Tech stack:
 - [`React`](https://ru.legacy.reactjs.org/)
+- [`React Redux`](https://react-redux.js.org)
 - [`TypeScript`](https://www.typescriptlang.org)
 - [`CSS Modules`](https://github.com/css-modules/css-modules)
 
