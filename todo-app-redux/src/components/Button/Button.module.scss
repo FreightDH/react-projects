@@ -64,4 +64,14 @@
       box-shadow: 0px 0px 10px 2px rgba($color: #ced4da, $alpha: 1);
     }
   }
+
+  &.selected {
+    border: 1px solid #007bff;
+    background-color: rgba($color: #007bff, $alpha: 0.1);
+    color: #007bff;
+
+    &:hover {
+      box-shadow: 0px 0px 10px 2px rgba($color: #007bff, $alpha: 0.2);
+    }
+  }
 }
