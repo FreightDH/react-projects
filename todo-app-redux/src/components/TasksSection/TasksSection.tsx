@@ -28,21 +28,15 @@ const TasksSection = (): ReactElement => {
 
         <div className={styles.tasks__controls}>
           <div className={styles.tasks__filter}>
-            <Button
-              onClick={() => dispatch(filterTasks({ query: 'all' }))}
-              className={currentFilter === 'all' ? 'selected' : ''}
-            >
+            <Button onClick={() => dispatch(filterTasks({ query: 'all' }))} selected={currentFilter === 'all'}>
               All
             </Button>
-            <Button
-              onClick={() => dispatch(filterTasks({ query: 'active' }))}
-              className={currentFilter === 'active' ? 'selected' : ''}
-            >
+            <Button onClick={() => dispatch(filterTasks({ query: 'active' }))} selected={currentFilter === 'active'}>
               Active
             </Button>
             <Button
               onClick={() => dispatch(filterTasks({ query: 'completed' }))}
-              className={currentFilter === 'completed' ? 'selected' : ''}
+              selected={currentFilter === 'completed'}
             >
               Completed
             </Button>
