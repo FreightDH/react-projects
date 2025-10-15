@@ -1,0 +1,13 @@
+.input {
+  padding: 5px;
+  border-radius: 3px;
+
+  font-size: 14px;
+
+  &:focus {
+    &::placeholder {
+      color: transparent;
+      transition: all 0.2s ease 0s;
+    }
+  }
+}
